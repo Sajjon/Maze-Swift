@@ -11,8 +11,8 @@ import GameplayKit
 
 public typealias Path = [GKGridGraphNode]
 public class EnemyState: GKState {
-    private unowned let game: Game
-    private unowned let entity: GameEntity
+    internal unowned let game: Game
+    internal unowned let entity: GameEntity
     
     public init(
         game: Game,
@@ -38,7 +38,23 @@ public extension EnemyState {
         }
         return path
     }
-    func startFollowing(path: Path) {
-        fatalError()
+    
+    func startFollowing(path: Path?) {
+        guard
+            let path = path,
+            path.count > 1
+            else {
+                return
+        }
+        
+        // Set up a move to the first node on the path, but
+        // no farther because the next update will recalculate the path.
+        
+        let firstMove = path[1] // path[0] is the enemy's current position.
+        spriteComponent.setNextGridPosition(firstMove.gridPosition)
+    }
+    
+    var spriteComponent: SpriteComponent {
+        entity.componentOf(type: SpriteComponent.self)
     }
 }

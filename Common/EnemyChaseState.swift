@@ -9,22 +9,109 @@
 import Foundation
 import GameplayKit
 
+public extension GKRandomSource {
+    func shuffling<Element>(array: [Element]) -> [Element] {
+        guard
+            case let shuffledMapped = arrayByShufflingObjects(in: array).compactMap({
+                $0 as? Element
+            }),
+            shuffledMapped.count == array.count
+        else {
+            fatalError("What? Array change Element type?")
+        }
+        
+        return shuffledMapped
+    }
+}
+
 public final class EnemyChaseState: EnemyState {
-    private enum RuleFact: String, GameRuleFact {
+    
+    private lazy var ruleSystem = EnemyChaseState.setupGameRuleSystem()
+    
+    private var isHunting: Bool = false {
+        willSet {
+            guard newValue == false && isHunting == true else {
+                return
+            }
+            let shuffledStartPositions = game.random.shuffling(array: game.level.enemyStartPositions)
+            self.scatterTarget = shuffledStartPositions.first
+        }
+    }
+    
+    private var scatterTarget: GKGridGraphNode?
+}
+
+// MARK: Public
+public extension EnemyChaseState {
+    func pathToPlayer() -> Path? {
+        let graph = game.level.pathfindingGraph
+        guard let playerNode = graph.node(atGridPosition: game.player.gridPosition) else {
+            return nil
+        }
+        return path(to: playerNode)
+    }
+}
+
+// MARK: - Override
+// ---
+// ---
+// ---
+// MARK: GKState LifeCycle
+public extension EnemyChaseState {
+  
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        stateClass == EnemyFleeState.self
+    }
+    
+    override func didEnter(from _: GKState?) {
+        // Set the enemy sprite to its normal appearance,
+        // undoing any changes that happened in other states.
+        spriteComponent.useNormalAppearance()
+    }
+    
+    override func update(deltaTime seconds: TimeInterval) {
+        // If the enemy has reached its target, choose a new target.
+        let gridPosition = entity.gridPosition
+        if
+            let scatterTarget = scatterTarget,
+            scatterTarget.gridPosition == gridPosition
+        {
+            isHunting = true
+        }
+        
+        let distanceToPlayer = pathToPlayer()?.count ?? 0
+        ruleSystem[.distanceToPlayer] = distanceToPlayer
+        ruleSystem.reset()
+        ruleSystem.evaluate()
+        isHunting = ruleSystem.grade(forFact: .hunt) > 0
+        if isHunting {
+            startFollowing(path: pathToPlayer())
+        } else if let scatterTarget = scatterTarget {
+            startFollowing(path: path(to: scatterTarget))
+        }
+    }
+}
+
+// MARK: RuleFact + StateKey
+private extension EnemyChaseState {
+    enum RuleFact: String, GameRuleFact {
         case hunt
     }
-    private enum RuleSystemStateKey: String, GameRuleSystemStateKey {
+    enum RuleSystemStateKey: String, GameRuleSystemStateKey {
         case distanceToPlayer
     }
     
-    private typealias RuleSystem = GameRuleSystem<RuleFact, RuleSystemStateKey>
-    
-    private lazy var ruleSystem: RuleSystem = {
+    typealias RuleSystem = GameRuleSystem<RuleFact, RuleSystemStateKey>
+}
+
+// MARK: Setup Rules
+private extension EnemyChaseState {
+    static func setupGameRuleSystem() -> RuleSystem {
         let ruleSystem = RuleSystem()
-        typealias Proximiy = Int
+        
         func addDistanceToPlayerRule(
             factType: RuleSystem.RuleFactType,
-            _ blockPredicate: (Proximiy) -> Bool
+            _ blockPredicate: @escaping (Int) -> Bool
         ) {
             ruleSystem.addRule(
                 factType: factType,
@@ -39,7 +126,7 @@ public final class EnemyChaseState: EnemyState {
             }
         }
         
-        let playerProximityThreshold: Proximiy = 10
+        let playerProximityThreshold: Int = 10
         
         addDistanceToPlayerRule(factType: .asserting(.hunt)) {
             $0 >= playerProximityThreshold
@@ -49,15 +136,5 @@ public final class EnemyChaseState: EnemyState {
             $0 < playerProximityThreshold
         }
         return ruleSystem
-    }()
-    
-    private var isHunting: Bool = false
-    private var scatterTarget: GKGridGraphNode?
-    
-    public override init(
-        game: Game,
-        entity: GameEntity
-    ) {
-        super.init(game: game, entity: entity)
     }
 }

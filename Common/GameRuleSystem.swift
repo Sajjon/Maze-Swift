@@ -42,6 +42,10 @@ public extension GameRuleSystem {
         }
     }
     
+    func grade(forFact fact: Fact) -> Float {
+        grade(forFact: NSString(string: fact.rawValue))
+    }
+    
     func addRule(
         factType: RuleFactType,
         grade: Float? = nil,
