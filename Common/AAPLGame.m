@@ -55,7 +55,9 @@ typedef NS_OPTIONS(NSUInteger, ContactCategory) {
 		// Create enemy entities with display and AI components.
         NSArray<SKColor *> *colors = @[[SKColor redColor], [SKColor greenColor], [SKColor yellowColor], [SKColor magentaColor]];
 		_intelligenceSystem = [[GKComponentSystem alloc] initWithComponentClass:[AAPLIntelligenceComponent class]];
+        
         NSMutableArray<AAPLEntity *> *enemies = [NSMutableArray arrayWithCapacity:_level.enemyStartPositions.count];
+        
         [_level.enemyStartPositions enumerateObjectsUsingBlock:^(GKGridGraphNode *node, NSUInteger index, BOOL *stop) {
             AAPLEntity *enemy = [[AAPLEntity alloc] init];
             enemy.gridPosition = node.gridPosition;

@@ -59,14 +59,13 @@ public extension SpriteComponent {
         changeColor(to: colorDefault)
     }
 
-    
     func useFleeAppearance() {
         changeColor(to: .white)
     }
     
     func useDefeatedAppearance() {
         run(actions: [.scale(to: 0.25, duration: 0.25)])
-      }
+    }
 }
 
 public extension SpriteComponent {
