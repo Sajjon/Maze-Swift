@@ -31,9 +31,12 @@
         _ruleSystem = [[GKRuleSystem alloc] init];
 
         NSPredicate *playerFar = [NSPredicate predicateWithFormat:@"$distanceToPlayer.floatValue >= 10.0"];
-        [_ruleSystem addRule:[GKRule ruleWithPredicate:playerFar assertingFact:@"hunt" grade:1.0]];
+        
+        GKRule *aRule = [GKRule ruleWithPredicate:playerFar assertingFact:@"hunt" grade:1.0];
+        [_ruleSystem addRule: aRule];
         
         NSPredicate *playerNear = [NSPredicate predicateWithFormat:@"$distanceToPlayer.floatValue < 10.0"];
+        
         [_ruleSystem addRule:[GKRule ruleWithPredicate:playerNear retractingFact:@"hunt" grade:1.0]];
     }
     

@@ -63,6 +63,18 @@
 		48527397244C5C19005EC7D8 /* GameComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48527395244C5C19005EC7D8 /* GameComponent.swift */; };
 		4852739A244C5D19005EC7D8 /* SpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48527399244C5D19005EC7D8 /* SpriteNode.swift */; };
 		4852739B244C5D19005EC7D8 /* SpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48527399244C5D19005EC7D8 /* SpriteNode.swift */; };
+		4858EA92244CF8F200A6AE25 /* GameRuleSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858EA91244CF8F200A6AE25 /* GameRuleSystem.swift */; };
+		4858EA93244CF8F200A6AE25 /* GameRuleSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858EA91244CF8F200A6AE25 /* GameRuleSystem.swift */; };
+		4858EA97244CF92900A6AE25 /* EnemyChaseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858EA96244CF92900A6AE25 /* EnemyChaseState.swift */; };
+		4858EA98244CF92900A6AE25 /* EnemyChaseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858EA96244CF92900A6AE25 /* EnemyChaseState.swift */; };
+		4858EA9A244CF93A00A6AE25 /* EnemyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858EA99244CF93A00A6AE25 /* EnemyState.swift */; };
+		4858EA9B244CF93A00A6AE25 /* EnemyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858EA99244CF93A00A6AE25 /* EnemyState.swift */; };
+		4858EA9D244CF96F00A6AE25 /* EnemyFleeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858EA9C244CF96F00A6AE25 /* EnemyFleeState.swift */; };
+		4858EA9E244CF96F00A6AE25 /* EnemyFleeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858EA9C244CF96F00A6AE25 /* EnemyFleeState.swift */; };
+		4858EAA0244CF99A00A6AE25 /* EnemyRespawnState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858EA9F244CF99A00A6AE25 /* EnemyRespawnState.swift */; };
+		4858EAA1244CF99A00A6AE25 /* EnemyRespawnState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858EA9F244CF99A00A6AE25 /* EnemyRespawnState.swift */; };
+		4858EAA3244CF9C500A6AE25 /* EnemyDefeatedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858EAA2244CF9C500A6AE25 /* EnemyDefeatedState.swift */; };
+		4858EAA4244CF9C500A6AE25 /* EnemyDefeatedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858EAA2244CF9C500A6AE25 /* EnemyDefeatedState.swift */; };
 		E655AE0D244C9CC900BB8D2B /* IntelligenceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E655AE0C244C9CC900BB8D2B /* IntelligenceComponent.swift */; };
 		E655AE0E244C9CC900BB8D2B /* IntelligenceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E655AE0C244C9CC900BB8D2B /* IntelligenceComponent.swift */; };
 /* End PBXBuildFile section */
@@ -120,6 +132,12 @@
 		4852738D244C597C005EC7D8 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		48527395244C5C19005EC7D8 /* GameComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameComponent.swift; sourceTree = "<group>"; };
 		48527399244C5D19005EC7D8 /* SpriteNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteNode.swift; sourceTree = "<group>"; };
+		4858EA91244CF8F200A6AE25 /* GameRuleSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRuleSystem.swift; sourceTree = "<group>"; };
+		4858EA96244CF92900A6AE25 /* EnemyChaseState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyChaseState.swift; sourceTree = "<group>"; };
+		4858EA99244CF93A00A6AE25 /* EnemyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyState.swift; sourceTree = "<group>"; };
+		4858EA9C244CF96F00A6AE25 /* EnemyFleeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyFleeState.swift; sourceTree = "<group>"; };
+		4858EA9F244CF99A00A6AE25 /* EnemyRespawnState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyRespawnState.swift; sourceTree = "<group>"; };
+		4858EAA2244CF9C500A6AE25 /* EnemyDefeatedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyDefeatedState.swift; sourceTree = "<group>"; };
 		E655AE0C244C9CC900BB8D2B /* IntelligenceComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntelligenceComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -290,10 +308,11 @@
 		48527386244C594A005EC7D8 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				4858EA94244CF91300A6AE25 /* AI */,
 				48527387244C5953005EC7D8 /* SpriteComponent.swift */,
 				4852738A244C5960005EC7D8 /* PlayerControlComponent.swift */,
 				48527395244C5C19005EC7D8 /* GameComponent.swift */,
-				E655AE0C244C9CC900BB8D2B /* IntelligenceComponent.swift */,
+				4858EA91244CF8F200A6AE25 /* GameRuleSystem.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -311,6 +330,27 @@
 				48527399244C5D19005EC7D8 /* SpriteNode.swift */,
 			);
 			name = Nodes;
+			sourceTree = "<group>";
+		};
+		4858EA94244CF91300A6AE25 /* AI */ = {
+			isa = PBXGroup;
+			children = (
+				4858EA95244CF91C00A6AE25 /* EnemyState */,
+				E655AE0C244C9CC900BB8D2B /* IntelligenceComponent.swift */,
+			);
+			name = AI;
+			sourceTree = "<group>";
+		};
+		4858EA95244CF91C00A6AE25 /* EnemyState */ = {
+			isa = PBXGroup;
+			children = (
+				4858EA96244CF92900A6AE25 /* EnemyChaseState.swift */,
+				4858EA99244CF93A00A6AE25 /* EnemyState.swift */,
+				4858EA9C244CF96F00A6AE25 /* EnemyFleeState.swift */,
+				4858EA9F244CF99A00A6AE25 /* EnemyRespawnState.swift */,
+				4858EAA2244CF9C500A6AE25 /* EnemyDefeatedState.swift */,
+			);
+			name = EnemyState;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,6 +461,8 @@
 				11BC3DCA1AEEF3D9008E0AFA /* AAPLSpriteNode.m in Sources */,
 				11B55DDA1AEA933400471D70 /* AAPLIntelligenceComponent.m in Sources */,
 				11B55DDE1AEA948C00471D70 /* AAPLEnemyChaseState.m in Sources */,
+				4858EAA3244CF9C500A6AE25 /* EnemyDefeatedState.swift in Sources */,
+				4858EA9D244CF96F00A6AE25 /* EnemyFleeState.swift in Sources */,
 				11B55DE21AEA963E00471D70 /* AAPLEnemyFleeState.m in Sources */,
 				48527384244C5927005EC7D8 /* GameEntity.swift in Sources */,
 				E655AE0D244C9CC900BB8D2B /* IntelligenceComponent.swift in Sources */,
@@ -428,9 +470,11 @@
 				4852739A244C5D19005EC7D8 /* SpriteNode.swift in Sources */,
 				11B55DCE1AE9F2E100471D70 /* AAPLSpriteComponent.m in Sources */,
 				1141FF891AE58AFD001AA25A /* main.m in Sources */,
+				4858EA97244CF92900A6AE25 /* EnemyChaseState.swift in Sources */,
 				4852737E244C5909005EC7D8 /* Scene.swift in Sources */,
 				48527381244C5914005EC7D8 /* Macros.swift in Sources */,
 				11B55DEA1AEA966B00471D70 /* AAPLEnemyRespawnState.m in Sources */,
+				4858EA92244CF8F200A6AE25 /* GameRuleSystem.swift in Sources */,
 				1141FF861AE58AFD001AA25A /* AAPLAppDelegate.m in Sources */,
 				11B55DE61AEA964E00471D70 /* AAPLEnemyDefeatedState.m in Sources */,
 				11C99D991AE83EB40043B729 /* AAPLLevel.m in Sources */,
@@ -439,6 +483,8 @@
 				48527388244C5953005EC7D8 /* SpriteComponent.swift in Sources */,
 				11775C6D1AE58E9500E81B31 /* AAPLGame.m in Sources */,
 				4852738E244C597C005EC7D8 /* Direction.swift in Sources */,
+				4858EAA0244CF99A00A6AE25 /* EnemyRespawnState.swift in Sources */,
+				4858EA9A244CF93A00A6AE25 /* EnemyState.swift in Sources */,
 				4852738B244C5960005EC7D8 /* PlayerControlComponent.swift in Sources */,
 				11A3C3DC1AEAD82700B1FD62 /* AAPLEnemyState.m in Sources */,
 				11B55DD61AE9F97100471D70 /* AAPLEntity.m in Sources */,
@@ -454,18 +500,21 @@
 				11BC3DCB1AEEF3D9008E0AFA /* AAPLSpriteNode.m in Sources */,
 				4852738C244C5960005EC7D8 /* PlayerControlComponent.swift in Sources */,
 				11B55DD71AE9F97100471D70 /* AAPLEntity.m in Sources */,
+				4858EA98244CF92900A6AE25 /* EnemyChaseState.swift in Sources */,
 				11C99D9A1AE83EB40043B729 /* AAPLLevel.m in Sources */,
 				4852737F244C5909005EC7D8 /* Scene.swift in Sources */,
 				11775C6E1AE58E9500E81B31 /* AAPLGame.m in Sources */,
 				116C7B991AEF02E9009EB2F8 /* AAPLPlayerControlComponent.m in Sources */,
 				11B55DEB1AEA966B00471D70 /* AAPLEnemyRespawnState.m in Sources */,
 				113D0C6D1B17C45100151E17 /* AAPLEnemyState.m in Sources */,
+				4858EAA4244CF9C500A6AE25 /* EnemyDefeatedState.swift in Sources */,
 				48527397244C5C19005EC7D8 /* GameComponent.swift in Sources */,
 				11B55DCF1AE9F2E100471D70 /* AAPLSpriteComponent.m in Sources */,
 				11B55DD31AE9F3A400471D70 /* AAPLScene.m in Sources */,
 				4852738F244C597C005EC7D8 /* Direction.swift in Sources */,
 				11B55DDF1AEA948C00471D70 /* AAPLEnemyChaseState.m in Sources */,
 				1141FFBC1AE58BC6001AA25A /* AAPLGameViewController.m in Sources */,
+				4858EAA1244CF99A00A6AE25 /* EnemyRespawnState.swift in Sources */,
 				48527389244C5953005EC7D8 /* SpriteComponent.swift in Sources */,
 				1141FFB41AE58BC6001AA25A /* AAPLAppDelegate.m in Sources */,
 				4852737C244C54FA005EC7D8 /* Level.swift in Sources */,
@@ -475,7 +524,10 @@
 				E655AE0E244C9CC900BB8D2B /* IntelligenceComponent.swift in Sources */,
 				48527382244C5914005EC7D8 /* Macros.swift in Sources */,
 				1141FFB11AE58BC6001AA25A /* main.m in Sources */,
+				4858EA9B244CF93A00A6AE25 /* EnemyState.swift in Sources */,
 				11B55DDB1AEA933400471D70 /* AAPLIntelligenceComponent.m in Sources */,
+				4858EA9E244CF96F00A6AE25 /* EnemyFleeState.swift in Sources */,
+				4858EA93244CF8F200A6AE25 /* GameRuleSystem.swift in Sources */,
 				11B55DE31AEA963E00471D70 /* AAPLEnemyFleeState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

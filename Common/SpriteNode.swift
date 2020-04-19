@@ -11,7 +11,7 @@ import SpriteKit
 
 public final class SpriteNode: SKSpriteNode {
     
-    private unowned let owner: SpriteComponent
+    unowned let owner: SpriteComponent
     
     public init(
         owner: SpriteComponent,

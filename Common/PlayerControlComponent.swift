@@ -26,3 +26,10 @@ public final class PlayerControlComponent: GameComponent {
         interfaceBuilderNotSupported
     }
 }
+
+public extension PlayerControlComponent {
+    func resetDirection() {
+        direction = nil
+        attemptedDirection = nil
+    }
+}

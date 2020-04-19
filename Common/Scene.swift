@@ -9,7 +9,16 @@
 import Foundation
 import SpriteKit
 
-public final class Scene: SKScene {}
+public protocol SceneDelegate: SKSceneDelegate, AnyObject {
+    var hasPowerup: Bool { get set }
+    var playerDirection: Direction { get set }
+    
+    func scene(_ scene: Scene, didMoveToView: SKView)
+}
+
+public final class Scene: SKScene {
+   public var sceneDelegate: SceneDelegate?
+}
 
 public extension Scene {
     
