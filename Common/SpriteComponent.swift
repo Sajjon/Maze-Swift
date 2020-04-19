@@ -19,8 +19,12 @@ public final class SpriteComponent: GameComponent {
     private var nextGridPosition: GridPosition?
     
 
-    public var isPulseEffectEnabled: Bool {
-        didSet {
+    public var isPulseEffectEnabled: Bool = false {
+        willSet {
+            guard newValue != isPulseEffectEnabled else {
+                return
+            }
+            
             if isPulseEffectEnabled {
                 let grow: SKAction = .scale(to: 1.5, duration: 0.5)
                 let shrink = grow.reversed()
@@ -29,7 +33,7 @@ public final class SpriteComponent: GameComponent {
                         grow,
                         shrink
                     ],
-                    withKey:
+                    withKey: ActionKey.pulse
                 )
             } else {
                 sprite?.removeAction(forKey: ActionKey.pulse.rawValue)
@@ -89,7 +93,7 @@ public extension SpriteComponent {
             withKey: .move
         )
     }
-  
+    
     func warp(to gridPosition: GridPosition) {
         let fadeOut: SKAction = .fadeOut(withDuration: 0.5)
         let warp: SKAction = .move(
@@ -114,10 +118,9 @@ public extension SpriteComponent {
             
             return [
                 actionMoveTo(positionOf: node),
-                SKAction.run({ [unowned self] in
-                    try! self.gameEntity.updateGridPosition(node.gridPosition)
-                })
+                actionUpdate(gridPosition: node.gridPosition)
             ]
+            
         }.flatMap { $0 }
         
         run(actions: actions, done)
@@ -130,19 +133,21 @@ private extension SpriteComponent {
         case pulse, move
     }
     
-      var scene: Scene {
-          guard let sprite = sprite else {
-              fatalError("No 'sprite', bad state! should have been set in 'Game' setup?")
-          }
-          guard let skScene = sprite.scene else {
-              fatalError("'sprite' does not belong to ANY SKScene! Bad state?")
-          }
-          guard let scene = skScene as? Scene else {
-              fatalError("SKScene is not of type `Scene`, what is it?")
-          }
-          return scene
-      }
-      
+    var scene: Scene {
+        guard let sprite = sprite else {
+            fatalError("No 'sprite', bad state! should have been set in 'Game' setup?")
+        }
+        
+        guard let skScene = sprite.scene else {
+            fatalError("'sprite' does not belong to ANY SKScene! Bad state?")
+        }
+        guard let scene = skScene as? Scene else {
+            fatalError("SKScene is not of type `Scene`, what is it?")
+        }
+        
+        return scene
+    }
+    
     
     func pointFrom(gridPosition: GridPosition) -> CGPoint {
         scene.pointFrom(gridPosition: gridPosition)
@@ -174,9 +179,9 @@ private extension SpriteComponent {
         actionMove(to: graphNode.gridPosition, duration: duration)
     }
     
-    func actionUpdate(gridPosition: GridPosition) -> SKAction{
-        .run { [unowned gameEntity] in
-            try! gameEntity.updateGridPosition(gridPosition)
+    func actionUpdate(gridPosition: GridPosition) -> SKAction {
+        .run { [unowned self] in
+            try! self.gameEntity.updateGridPosition(gridPosition)
         }
     }
     

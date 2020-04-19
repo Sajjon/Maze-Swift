@@ -29,6 +29,7 @@ public final class GameEntity: GKEntity {
 public extension GameEntity {
     
     func updateGridPosition(_ newGridPosition: GridPosition) throws {
+        // TODO validate that the new grid position exists....
         self.gridPosition = newGridPosition
     }
     
