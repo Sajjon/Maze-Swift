@@ -33,23 +33,12 @@ public final class EnemyChaseState: EnemyState {
             guard newValue == false && isHunting == true else {
                 return
             }
-            let shuffledStartPositions = game.random.shuffling(array: game.level.enemyStartPositions)
-            self.scatterTarget = shuffledStartPositions.first
+       
+            self.scatterTarget = randomEnemyStartPosition()
         }
     }
     
     private var scatterTarget: GKGridGraphNode?
-}
-
-// MARK: Public
-public extension EnemyChaseState {
-    func pathToPlayer() -> Path? {
-        let graph = game.level.pathfindingGraph
-        guard let playerNode = graph.node(atGridPosition: game.player.gridPosition) else {
-            return nil
-        }
-        return path(to: playerNode)
-    }
 }
 
 // MARK: - Override

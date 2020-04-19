@@ -7,5 +7,34 @@
 //
 
 import Foundation
+import GameplayKit
 
-public final class EnemyFleeState: EnemyState {}
+public final class EnemyFleeState: EnemyState {
+    private var target: GKGridGraphNode?
+}
+
+public extension EnemyFleeState {
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        stateClass == EnemyChaseState.self || stateClass == EnemyDefeatedState.self
+    }
+    
+    override func didEnter(from previousState: GKState?) {
+        spriteComponent.useFleeAppearance()
+        
+        // Choose a location to flee towards.
+        target = randomEnemyStartPosition()
+    }
+    
+    override func update(deltaTime _: TimeInterval) {
+        // If the enemy has reached its target, choose a new target.
+        let position = entity.gridPosition
+        if target?.gridPosition == position {
+            target = randomEnemyStartPosition()
+        }
+        
+        // Flee towards the current target point.
+        if let target = target {
+            startFollowing(path: path(to: target))
+        }
+    }
+}

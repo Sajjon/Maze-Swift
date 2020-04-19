@@ -11,7 +11,7 @@ import GameplayKit
 
 public typealias Path = [GKGridGraphNode]
 public class EnemyState: GKState {
-    internal unowned let game: Game
+    private unowned let game: Game
     internal unowned let entity: GameEntity
     
     public init(
@@ -25,6 +25,19 @@ public class EnemyState: GKState {
 }
 
 public extension EnemyState {
+    
+    func pathToPlayer() -> Path? {
+        let graph = game.level.pathfindingGraph
+        guard let playerNode = graph.node(atGridPosition: game.player.gridPosition) else {
+            return nil
+        }
+        return path(to: playerNode)
+    }
+    
+    func randomEnemyStartPosition() -> GKGridGraphNode? {
+        game.random.shuffling(array: game.level.enemyStartPositions).first
+    }
+    
     func path(to destinationNode: GKGridGraphNode) -> Path? {
         let graph = game.level.pathfindingGraph
         guard let enemyNode = graph.node(atGridPosition: entity.gridPosition) else {
