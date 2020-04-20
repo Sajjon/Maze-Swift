@@ -32,4 +32,31 @@ public extension Scene {
         
         return CGPoint(x: x, y: y)
     }
+    
+    override func didMove(to view: SKView) {
+        guard let sceneDelegate = sceneDelegate else {
+            fatalError("bad bad, no sceneDelegate")
+        }
+        sceneDelegate.scene(self, didMoveToView: view)
+    }
 }
+
+#if os(macOS)
+import AppKit
+import Carbon.HIToolbox.Events
+public extension Scene {
+    override func keyDown(with event: NSEvent) {
+        if let direction = Direction(event: event) {
+            sceneDelegate?.playerDirection = direction
+        } else {
+            let keyKode = Int(event.keyCode)
+            switch keyKode {
+            case kVK_Space:
+                sceneDelegate?.hasPowerup = true
+            default: break
+            }
+        }
+        
+    }
+}
+#endif
