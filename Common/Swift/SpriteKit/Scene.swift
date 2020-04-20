@@ -10,8 +10,8 @@ import Foundation
 import SpriteKit
 
 public protocol SceneDelegate: SKSceneDelegate, AnyObject {
-    var hasPowerup: Bool { get set }
-    var playerDirection: Direction { get set }
+    var playerIsImmortalAndLeathal: Bool { get set }
+    var playerDirection: Direction? { get set }
     
     func scene(_ scene: Scene, didMoveToView: SKView)
 }
@@ -52,7 +52,7 @@ public extension Scene {
             let keyKode = Int(event.keyCode)
             switch keyKode {
             case kVK_Space:
-                sceneDelegate?.hasPowerup = true
+                sceneDelegate?.playerIsImmortalAndLeathal = true
             default: break
             }
         }

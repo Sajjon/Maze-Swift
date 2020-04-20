@@ -23,12 +23,32 @@ extension NSColor {
 
 public final class Game: NSObject {
     public let level: Level
-    public private(set) var hasPowerup: Bool = false
+    private static let powerupDuractionInSeconds: TimeInterval = 10
+    private var lastUpdated: TimeInterval = -1
+    public var playerIsImmortalAndLeathal: Bool = false {
+        willSet {
+            let nextState: AnyClass
+            if newValue {
+                // If player has power app, enemies should flee from her
+                nextState = EnemyFleeState.self
+                powerupTimeRemaining = Self.powerupDuractionInSeconds
+            } else {
+                nextState = EnemyChaseState.self
+            }
+            
+            for component in intelligenceSystem.components {
+                component.stateMachine.enter(nextState)
+            }
+        }
+    }
+    
     public let random: GKRandomSource
     
     public lazy var player: GameEntity = Game.setupPlayer(level: self.level)
     
     private lazy var enemies: [GameEntity] = Game.setupEnemies(game: self)
+    
+    private var powerupTimeRemaining: TimeInterval = 0
     
     private lazy var intelligenceSystem: GKComponentSystem<IntelligenceComponent> = {
         let intelligenceSystem = GKComponentSystem<IntelligenceComponent>()
@@ -39,7 +59,19 @@ public final class Game: NSObject {
     }()
     
     public lazy var scene: Scene = {
-        fatalError()
+        let scene = Scene(
+            size: .init(
+                width: CGFloat(level.width) * Scene.cellWidth,
+                height: CGFloat(level.height) * Scene.cellWidth
+            )
+        )
+        
+        scene.delegate = self
+        scene.sceneDelegate = self
+        scene.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+        scene.physicsWorld.contactDelegate = self
+        
+        return scene
     }()
     
     public init(
@@ -141,6 +173,106 @@ public extension Game {
         } else {
             // Otherwise, that enemy enters the Defeated state only if in a state that allows that transition.
             aiComponent.stateMachine.enter(EnemyDefeatedState.self)
+        }
+    }
+}
+
+extension Game: SKSceneDelegate {}
+public extension Game {
+    func update(_ currentTime: TimeInterval, for scene: SKScene) {
+        if lastUpdated <= 0 {
+            // edge case, first time
+            lastUpdated = currentTime
+        }
+        let deltaTime = currentTime - lastUpdated
+        lastUpdated = currentTime
+        
+        // Track remaining time on the powerup (playerImmortalAndLeathal)
+        powerupTimeRemaining -= deltaTime
+        
+        // Update components with the new time delta
+        intelligenceSystem.update(deltaTime: deltaTime)
+        player.update(deltaTime: deltaTime)
+    }
+}
+
+extension Game: SceneDelegate {}
+public extension Game {
+    func scene(_ scene: Scene, didMoveToView: SKView) {
+        scene.backgroundColor = .black
+        
+        // Generate maze
+        let maze = SKNode()
+        let cellSize = CGSize(
+            width: Scene.cellWidth,
+            height: Scene.cellWidth
+        )
+        
+        let graph = level.pathfindingGraph
+        for x in 0..<level.width {
+            for y in 0..<level.height {
+                let gridPosition = GridPosition(x: Int32(x), y: Int32(y))
+                guard let _ = graph.node(atGridPosition: gridPosition) else { continue }
+                // Make nodes for traversable areas; leave walls as background color.
+                let node = SKSpriteNode(color: .gray, size: cellSize)
+                node.position = CGPoint(
+                    x: (CGFloat(x) + 0.5) * Scene.cellWidth,
+                    y: (CGFloat(y) + 0.5) * Scene.cellWidth
+                )
+                maze.addChild(node)
+            }
+        }
+        scene.addChild(maze)
+        
+        // Add player entity to scene
+        let playerComponent = player.componentOf(type: SpriteComponent.self)
+        let playerSprite: SpriteNode = {
+            let sprite = SpriteNode(
+                owner: playerComponent,
+                color: .cyan,
+                size: cellSize
+            )
+            sprite.position = scene.pointFrom(gridPosition: player.gridPosition)
+            sprite.zRotation = .pi / 4
+            sprite.xScale = sqrt(1)/2
+            sprite.yScale = sqrt(1)/2
+            sprite.physicsBody = { () -> SKPhysicsBody in
+                let body = SKPhysicsBody(circleOfRadius: Scene.cellWidth/2)
+                body.categoryBitMask = ContactCategorySwift.player.rawValue
+                body.contactTestBitMask = ContactCategorySwift.enemy.rawValue
+                body.collisionBitMask = 0
+                return body
+                
+            }()
+            return sprite
+        }()
+        playerComponent.sprite = playerSprite
+        scene.addChild(playerSprite)
+        
+        // Add enemy entities to scene
+        for enemyEntity in enemies {
+            let enemyComponent = enemyEntity.componentOf(type: SpriteComponent.self)
+            
+            let enemySprite: SpriteNode = {
+                let sprite = SpriteNode(
+                    owner: enemyComponent,
+                    color: enemyComponent.colorDefault,
+                    size: cellSize
+                )
+                sprite.position = scene.pointFrom(gridPosition: enemyEntity.gridPosition)
+                sprite.physicsBody = { () -> SKPhysicsBody in
+                    let body = SKPhysicsBody(circleOfRadius: Scene.cellWidth/2)
+                    body.categoryBitMask = ContactCategorySwift.enemy.rawValue
+                    body.contactTestBitMask = ContactCategorySwift.player.rawValue
+                    body.collisionBitMask = 0
+                    return body
+                    
+                }()
+                return sprite
+            }()
+            
+            enemyComponent.sprite = enemySprite
+            scene.addChild(enemySprite)
         }
     }
 }
