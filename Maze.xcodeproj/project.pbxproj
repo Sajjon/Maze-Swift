@@ -33,40 +33,6 @@
 		480A94CD244DB56100F780F7 /* AAPLEnemyRespawnState.m in Sources */ = {isa = PBXBuildFile; fileRef = 480A9490244DB56100F780F7 /* AAPLEnemyRespawnState.m */; };
 		480A94CE244DB56100F780F7 /* AAPLEnemyState.m in Sources */ = {isa = PBXBuildFile; fileRef = 480A9492244DB56100F780F7 /* AAPLEnemyState.m */; };
 		480A94CF244DB56100F780F7 /* AAPLEnemyState.m in Sources */ = {isa = PBXBuildFile; fileRef = 480A9492244DB56100F780F7 /* AAPLEnemyState.m */; };
-		480A94E9244DB61800F780F7 /* GameComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94D2244DB61800F780F7 /* GameComponent.swift */; };
-		480A94EA244DB61800F780F7 /* GameComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94D2244DB61800F780F7 /* GameComponent.swift */; };
-		480A94EB244DB61800F780F7 /* PlayerControlComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94D4244DB61800F780F7 /* PlayerControlComponent.swift */; };
-		480A94EC244DB61800F780F7 /* PlayerControlComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94D4244DB61800F780F7 /* PlayerControlComponent.swift */; };
-		480A94ED244DB61800F780F7 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94D5244DB61800F780F7 /* Direction.swift */; };
-		480A94EE244DB61800F780F7 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94D5244DB61800F780F7 /* Direction.swift */; };
-		480A94EF244DB61800F780F7 /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94D6244DB61800F780F7 /* SpriteComponent.swift */; };
-		480A94F0244DB61800F780F7 /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94D6244DB61800F780F7 /* SpriteComponent.swift */; };
-		480A94F1244DB61800F780F7 /* GameEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94D7244DB61800F780F7 /* GameEntity.swift */; };
-		480A94F2244DB61800F780F7 /* GameEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94D7244DB61800F780F7 /* GameEntity.swift */; };
-		480A94F3244DB61800F780F7 /* IntelligenceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94D9244DB61800F780F7 /* IntelligenceComponent.swift */; };
-		480A94F4244DB61800F780F7 /* IntelligenceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94D9244DB61800F780F7 /* IntelligenceComponent.swift */; };
-		480A94F5244DB61800F780F7 /* GameRuleSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94DA244DB61800F780F7 /* GameRuleSystem.swift */; };
-		480A94F6244DB61800F780F7 /* GameRuleSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94DA244DB61800F780F7 /* GameRuleSystem.swift */; };
-		480A94F7244DB61800F780F7 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94DC244DB61800F780F7 /* Game.swift */; };
-		480A94F8244DB61800F780F7 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94DC244DB61800F780F7 /* Game.swift */; };
-		480A94F9244DB61800F780F7 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94DE244DB61800F780F7 /* Scene.swift */; };
-		480A94FA244DB61800F780F7 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94DE244DB61800F780F7 /* Scene.swift */; };
-		480A94FB244DB61800F780F7 /* SpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94DF244DB61800F780F7 /* SpriteNode.swift */; };
-		480A94FC244DB61800F780F7 /* SpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94DF244DB61800F780F7 /* SpriteNode.swift */; };
-		480A94FD244DB61800F780F7 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94E1244DB61800F780F7 /* Level.swift */; };
-		480A94FE244DB61800F780F7 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94E1244DB61800F780F7 /* Level.swift */; };
-		480A94FF244DB61800F780F7 /* EnemyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94E3244DB61800F780F7 /* EnemyState.swift */; };
-		480A9500244DB61800F780F7 /* EnemyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94E3244DB61800F780F7 /* EnemyState.swift */; };
-		480A9501244DB61800F780F7 /* EnemyRespawnState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94E4244DB61800F780F7 /* EnemyRespawnState.swift */; };
-		480A9502244DB61800F780F7 /* EnemyRespawnState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94E4244DB61800F780F7 /* EnemyRespawnState.swift */; };
-		480A9503244DB61800F780F7 /* EnemyChaseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94E5244DB61800F780F7 /* EnemyChaseState.swift */; };
-		480A9504244DB61800F780F7 /* EnemyChaseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94E5244DB61800F780F7 /* EnemyChaseState.swift */; };
-		480A9505244DB61800F780F7 /* EnemyFleeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94E6244DB61800F780F7 /* EnemyFleeState.swift */; };
-		480A9506244DB61800F780F7 /* EnemyFleeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94E6244DB61800F780F7 /* EnemyFleeState.swift */; };
-		480A9507244DB61800F780F7 /* EnemyDefeatedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94E7244DB61800F780F7 /* EnemyDefeatedState.swift */; };
-		480A9508244DB61800F780F7 /* EnemyDefeatedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94E7244DB61800F780F7 /* EnemyDefeatedState.swift */; };
-		480A9509244DB61800F780F7 /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94E8244DB61800F780F7 /* Macros.swift */; };
-		480A950A244DB61800F780F7 /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94E8244DB61800F780F7 /* Macros.swift */; };
 		48BD21AE244E05640099A021 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48BD21A5244E05640099A021 /* MainMenu.xib */; };
 		48BD21AF244E05640099A021 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48BD21A7244E05640099A021 /* Images.xcassets */; };
 		48BD21B1244E05640099A021 /* AAPLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BD21AB244E05640099A021 /* AAPLAppDelegate.m */; };
@@ -74,9 +40,9 @@
 		48BD21C1244E06470099A021 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48BD21B4244E06470099A021 /* LaunchScreen.xib */; };
 		48BD21C2244E06470099A021 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48BD21B6244E06470099A021 /* Main.storyboard */; };
 		48BD21C3244E06470099A021 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48BD21B8244E06470099A021 /* Images.xcassets */; };
-		48BD21C5244E06470099A021 /* AAPLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BD21BC244E06470099A021 /* AAPLAppDelegate.m */; };
-		48BD21C6244E06470099A021 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BD21BE244E06470099A021 /* main.m */; };
-		48BD21C7244E06470099A021 /* AAPLGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BD21C0244E06470099A021 /* AAPLGameViewController.m */; };
+		48BD21EB244E09AB0099A021 /* AAPLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BD21E5244E09AB0099A021 /* AAPLAppDelegate.m */; };
+		48BD21EC244E09AB0099A021 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BD21E7244E09AB0099A021 /* main.m */; };
+		48BD21ED244E09AB0099A021 /* AAPLGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BD21E9244E09AB0099A021 /* AAPLGameViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,19 +92,19 @@
 		480A94E8244DB61800F780F7 /* Macros.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Macros.swift; sourceTree = "<group>"; };
 		48BD21A6244E05640099A021 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		48BD21A7244E05640099A021 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		48BD21A8244E05640099A021 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48BD21AB244E05640099A021 /* AAPLAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLAppDelegate.m; sourceTree = "<group>"; };
 		48BD21AC244E05640099A021 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		48BD21AD244E05640099A021 /* AAPLAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLAppDelegate.h; sourceTree = "<group>"; };
 		48BD21B5244E06470099A021 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		48BD21B7244E06470099A021 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		48BD21B8244E06470099A021 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		48BD21B9244E06470099A021 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		48BD21BC244E06470099A021 /* AAPLAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLAppDelegate.m; sourceTree = "<group>"; };
-		48BD21BD244E06470099A021 /* AAPLGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLGameViewController.h; sourceTree = "<group>"; };
-		48BD21BE244E06470099A021 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		48BD21BF244E06470099A021 /* AAPLAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLAppDelegate.h; sourceTree = "<group>"; };
-		48BD21C0244E06470099A021 /* AAPLGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLGameViewController.m; sourceTree = "<group>"; };
+		48BD21E2244E09830099A021 /* OSX-Objc-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OSX-Objc-Info.plist"; sourceTree = "<group>"; };
+		48BD21E3244E09AB0099A021 /* iOS-Objc-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iOS-Objc-Info.plist"; sourceTree = "<group>"; };
+		48BD21E5244E09AB0099A021 /* AAPLAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLAppDelegate.m; sourceTree = "<group>"; };
+		48BD21E6244E09AB0099A021 /* AAPLGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLGameViewController.h; sourceTree = "<group>"; };
+		48BD21E7244E09AB0099A021 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		48BD21E8244E09AB0099A021 /* AAPLAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLAppDelegate.h; sourceTree = "<group>"; };
+		48BD21E9244E09AB0099A021 /* AAPLGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLGameViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,7 +151,6 @@
 			children = (
 				48BD21AA244E05640099A021 /* ObjC */,
 				48BD21A4244E05640099A021 /* SupportingFiles */,
-				48BD21A9244E05640099A021 /* Swift */,
 			);
 			path = OSX;
 			sourceTree = "<group>";
@@ -364,21 +329,14 @@
 			children = (
 				48BD21A5244E05640099A021 /* MainMenu.xib */,
 				48BD21A7244E05640099A021 /* Images.xcassets */,
-				48BD21A8244E05640099A021 /* Info.plist */,
 			);
 			path = SupportingFiles;
-			sourceTree = "<group>";
-		};
-		48BD21A9244E05640099A021 /* Swift */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Swift;
 			sourceTree = "<group>";
 		};
 		48BD21AA244E05640099A021 /* ObjC */ = {
 			isa = PBXGroup;
 			children = (
+				48BD21E2244E09830099A021 /* OSX-Objc-Info.plist */,
 				48BD21AB244E05640099A021 /* AAPLAppDelegate.m */,
 				48BD21AC244E05640099A021 /* main.m */,
 				48BD21AD244E05640099A021 /* AAPLAppDelegate.h */,
@@ -392,7 +350,6 @@
 				48BD21B4244E06470099A021 /* LaunchScreen.xib */,
 				48BD21B6244E06470099A021 /* Main.storyboard */,
 				48BD21B8244E06470099A021 /* Images.xcassets */,
-				48BD21B9244E06470099A021 /* Info.plist */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -407,13 +364,22 @@
 		48BD21BB244E06470099A021 /* ObjC */ = {
 			isa = PBXGroup;
 			children = (
-				48BD21BC244E06470099A021 /* AAPLAppDelegate.m */,
-				48BD21BD244E06470099A021 /* AAPLGameViewController.h */,
-				48BD21BE244E06470099A021 /* main.m */,
-				48BD21BF244E06470099A021 /* AAPLAppDelegate.h */,
-				48BD21C0244E06470099A021 /* AAPLGameViewController.m */,
+				48BD21E3244E09AB0099A021 /* iOS-Objc-Info.plist */,
+				48BD21E4244E09AB0099A021 /* Sources */,
 			);
 			path = ObjC;
+			sourceTree = "<group>";
+		};
+		48BD21E4244E09AB0099A021 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				48BD21E5244E09AB0099A021 /* AAPLAppDelegate.m */,
+				48BD21E6244E09AB0099A021 /* AAPLGameViewController.h */,
+				48BD21E7244E09AB0099A021 /* main.m */,
+				48BD21E8244E09AB0099A021 /* AAPLAppDelegate.h */,
+				48BD21E9244E09AB0099A021 /* AAPLGameViewController.m */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -520,38 +486,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				480A94FD244DB61800F780F7 /* Level.swift in Sources */,
-				480A9501244DB61800F780F7 /* EnemyRespawnState.swift in Sources */,
 				480A94B6244DB56100F780F7 /* AAPLSpriteComponent.m in Sources */,
-				480A9505244DB61800F780F7 /* EnemyFleeState.swift in Sources */,
-				480A9503244DB61800F780F7 /* EnemyChaseState.swift in Sources */,
 				480A94CE244DB56100F780F7 /* AAPLEnemyState.m in Sources */,
 				48BD21B2244E05640099A021 /* main.m in Sources */,
-				480A94EB244DB61800F780F7 /* PlayerControlComponent.swift in Sources */,
-				480A94FF244DB61800F780F7 /* EnemyState.swift in Sources */,
 				480A94BA244DB56100F780F7 /* AAPLPlayerControlComponent.m in Sources */,
 				480A94C4244DB56100F780F7 /* AAPLLevel.m in Sources */,
-				480A9509244DB61800F780F7 /* Macros.swift in Sources */,
-				480A94FB244DB61800F780F7 /* SpriteNode.swift in Sources */,
 				480A94B8244DB56100F780F7 /* AAPLIntelligenceComponent.m in Sources */,
 				480A94BC244DB56100F780F7 /* AAPLEntity.m in Sources */,
 				480A94CC244DB56100F780F7 /* AAPLEnemyRespawnState.m in Sources */,
 				480A94C0244DB56100F780F7 /* AAPLScene.m in Sources */,
-				480A94EF244DB61800F780F7 /* SpriteComponent.swift in Sources */,
-				480A94F5244DB61800F780F7 /* GameRuleSystem.swift in Sources */,
 				480A94CA244DB56100F780F7 /* AAPLEnemyFleeState.m in Sources */,
-				480A94E9244DB61800F780F7 /* GameComponent.swift in Sources */,
-				480A9507244DB61800F780F7 /* EnemyDefeatedState.swift in Sources */,
 				48BD21B1244E05640099A021 /* AAPLAppDelegate.m in Sources */,
-				480A94F1244DB61800F780F7 /* GameEntity.swift in Sources */,
 				480A94C8244DB56100F780F7 /* AAPLEnemyDefeatedState.m in Sources */,
 				480A94C2244DB56100F780F7 /* AAPLGame.m in Sources */,
 				480A94C6244DB56100F780F7 /* AAPLEnemyChaseState.m in Sources */,
 				480A94BE244DB56100F780F7 /* AAPLSpriteNode.m in Sources */,
-				480A94F9244DB61800F780F7 /* Scene.swift in Sources */,
-				480A94F3244DB61800F780F7 /* IntelligenceComponent.swift in Sources */,
-				480A94ED244DB61800F780F7 /* Direction.swift in Sources */,
-				480A94F7244DB61800F780F7 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,38 +508,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				480A94FC244DB61800F780F7 /* SpriteNode.swift in Sources */,
-				480A9504244DB61800F780F7 /* EnemyChaseState.swift in Sources */,
 				480A94C5244DB56100F780F7 /* AAPLLevel.m in Sources */,
 				480A94BB244DB56100F780F7 /* AAPLPlayerControlComponent.m in Sources */,
-				480A9508244DB61800F780F7 /* EnemyDefeatedState.swift in Sources */,
-				480A94FE244DB61800F780F7 /* Level.swift in Sources */,
-				48BD21C6244E06470099A021 /* main.m in Sources */,
-				480A94FA244DB61800F780F7 /* Scene.swift in Sources */,
-				480A94EC244DB61800F780F7 /* PlayerControlComponent.swift in Sources */,
 				480A94B7244DB56100F780F7 /* AAPLSpriteComponent.m in Sources */,
 				480A94B9244DB56100F780F7 /* AAPLIntelligenceComponent.m in Sources */,
 				480A94BD244DB56100F780F7 /* AAPLEntity.m in Sources */,
-				480A94F0244DB61800F780F7 /* SpriteComponent.swift in Sources */,
-				480A9500244DB61800F780F7 /* EnemyState.swift in Sources */,
-				480A94F8244DB61800F780F7 /* Game.swift in Sources */,
-				480A94F2244DB61800F780F7 /* GameEntity.swift in Sources */,
 				480A94CD244DB56100F780F7 /* AAPLEnemyRespawnState.m in Sources */,
-				480A94EA244DB61800F780F7 /* GameComponent.swift in Sources */,
 				480A94C3244DB56100F780F7 /* AAPLGame.m in Sources */,
-				480A94F6244DB61800F780F7 /* GameRuleSystem.swift in Sources */,
 				480A94CB244DB56100F780F7 /* AAPLEnemyFleeState.m in Sources */,
-				480A9502244DB61800F780F7 /* EnemyRespawnState.swift in Sources */,
-				48BD21C7244E06470099A021 /* AAPLGameViewController.m in Sources */,
-				48BD21C5244E06470099A021 /* AAPLAppDelegate.m in Sources */,
 				480A94C1244DB56100F780F7 /* AAPLScene.m in Sources */,
-				480A94EE244DB61800F780F7 /* Direction.swift in Sources */,
 				480A94BF244DB56100F780F7 /* AAPLSpriteNode.m in Sources */,
-				480A950A244DB61800F780F7 /* Macros.swift in Sources */,
-				480A94F4244DB61800F780F7 /* IntelligenceComponent.swift in Sources */,
+				48BD21ED244E09AB0099A021 /* AAPLGameViewController.m in Sources */,
+				48BD21EC244E09AB0099A021 /* main.m in Sources */,
 				480A94C9244DB56100F780F7 /* AAPLEnemyDefeatedState.m in Sources */,
-				480A9506244DB61800F780F7 /* EnemyFleeState.swift in Sources */,
 				480A94C7244DB56100F780F7 /* AAPLEnemyChaseState.m in Sources */,
+				48BD21EB244E09AB0099A021 /* AAPLAppDelegate.m in Sources */,
 				480A94CF244DB56100F780F7 /* AAPLEnemyState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -715,7 +647,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = OSX/SupportingFiles/Info.plist;
+				INFOPLIST_FILE = "OSX/ObjC/OSX-Objc-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.Maze";
 				PRODUCT_NAME = Maze;
@@ -730,7 +662,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = OSX/SupportingFiles/Info.plist;
+				INFOPLIST_FILE = "OSX/ObjC/OSX-Objc-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.Maze";
 				PRODUCT_NAME = Maze;
@@ -745,7 +677,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				INFOPLIST_FILE = iOS/SupportingFiles/Info.plist;
+				INFOPLIST_FILE = "iOS/ObjC/iOS-Objc-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.Maze";
 				PRODUCT_NAME = Maze;
@@ -762,7 +694,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = iOS/SupportingFiles/Info.plist;
+				INFOPLIST_FILE = "iOS/ObjC/iOS-Objc-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.Maze";
 				PRODUCT_NAME = Maze;
