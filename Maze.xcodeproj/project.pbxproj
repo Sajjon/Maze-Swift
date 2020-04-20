@@ -7,16 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1141FF861AE58AFD001AA25A /* AAPLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1141FF851AE58AFD001AA25A /* AAPLAppDelegate.m */; };
-		1141FF891AE58AFD001AA25A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1141FF881AE58AFD001AA25A /* main.m */; };
-		1141FF901AE58AFD001AA25A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1141FF8F1AE58AFD001AA25A /* Images.xcassets */; };
-		1141FF931AE58AFD001AA25A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1141FF911AE58AFD001AA25A /* MainMenu.xib */; };
-		1141FFB11AE58BC6001AA25A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1141FFB01AE58BC6001AA25A /* main.m */; };
-		1141FFB41AE58BC6001AA25A /* AAPLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1141FFB31AE58BC6001AA25A /* AAPLAppDelegate.m */; };
-		1141FFBC1AE58BC6001AA25A /* AAPLGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1141FFBB1AE58BC6001AA25A /* AAPLGameViewController.m */; };
-		1141FFBF1AE58BC6001AA25A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1141FFBD1AE58BC6001AA25A /* Main.storyboard */; };
-		1141FFC11AE58BC6001AA25A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1141FFC01AE58BC6001AA25A /* Images.xcassets */; };
-		1141FFC41AE58BC6001AA25A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1141FFC21AE58BC6001AA25A /* LaunchScreen.xib */; };
 		480A94B6244DB56100F780F7 /* AAPLSpriteComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 480A947B244DB56000F780F7 /* AAPLSpriteComponent.m */; };
 		480A94B7244DB56100F780F7 /* AAPLSpriteComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 480A947B244DB56000F780F7 /* AAPLSpriteComponent.m */; };
 		480A94B8244DB56100F780F7 /* AAPLIntelligenceComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 480A947D244DB56000F780F7 /* AAPLIntelligenceComponent.m */; };
@@ -77,28 +67,23 @@
 		480A9508244DB61800F780F7 /* EnemyDefeatedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94E7244DB61800F780F7 /* EnemyDefeatedState.swift */; };
 		480A9509244DB61800F780F7 /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94E8244DB61800F780F7 /* Macros.swift */; };
 		480A950A244DB61800F780F7 /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A94E8244DB61800F780F7 /* Macros.swift */; };
+		48BD21AE244E05640099A021 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48BD21A5244E05640099A021 /* MainMenu.xib */; };
+		48BD21AF244E05640099A021 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48BD21A7244E05640099A021 /* Images.xcassets */; };
+		48BD21B1244E05640099A021 /* AAPLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BD21AB244E05640099A021 /* AAPLAppDelegate.m */; };
+		48BD21B2244E05640099A021 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BD21AC244E05640099A021 /* main.m */; };
+		48BD21C1244E06470099A021 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48BD21B4244E06470099A021 /* LaunchScreen.xib */; };
+		48BD21C2244E06470099A021 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48BD21B6244E06470099A021 /* Main.storyboard */; };
+		48BD21C3244E06470099A021 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48BD21B8244E06470099A021 /* Images.xcassets */; };
+		48BD21C5244E06470099A021 /* AAPLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BD21BC244E06470099A021 /* AAPLAppDelegate.m */; };
+		48BD21C6244E06470099A021 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BD21BE244E06470099A021 /* main.m */; };
+		48BD21C7244E06470099A021 /* AAPLGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BD21C0244E06470099A021 /* AAPLGameViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		113D0C6E1B19070400151E17 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		113D0C6F1B19070400151E17 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1141FF811AE58AFD001AA25A /* Maze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maze.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1141FF841AE58AFD001AA25A /* AAPLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AAPLAppDelegate.h; sourceTree = "<group>"; };
-		1141FF851AE58AFD001AA25A /* AAPLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AAPLAppDelegate.m; sourceTree = "<group>"; };
-		1141FF881AE58AFD001AA25A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		1141FF8F1AE58AFD001AA25A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		1141FF921AE58AFD001AA25A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		1141FF941AE58AFD001AA25A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1141FFAD1AE58BC6001AA25A /* Maze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maze.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1141FFB01AE58BC6001AA25A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		1141FFB21AE58BC6001AA25A /* AAPLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AAPLAppDelegate.h; sourceTree = "<group>"; };
-		1141FFB31AE58BC6001AA25A /* AAPLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AAPLAppDelegate.m; sourceTree = "<group>"; };
-		1141FFBA1AE58BC6001AA25A /* AAPLGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AAPLGameViewController.h; sourceTree = "<group>"; };
-		1141FFBB1AE58BC6001AA25A /* AAPLGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AAPLGameViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		1141FFBE1AE58BC6001AA25A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1141FFC01AE58BC6001AA25A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		1141FFC31AE58BC6001AA25A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		1141FFC51AE58BC6001AA25A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		480A9479244DB56000F780F7 /* AAPLIntelligenceComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLIntelligenceComponent.h; sourceTree = "<group>"; };
 		480A947A244DB56000F780F7 /* AAPLPlayerControlComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLPlayerControlComponent.h; sourceTree = "<group>"; };
 		480A947B244DB56000F780F7 /* AAPLSpriteComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLSpriteComponent.m; sourceTree = "<group>"; };
@@ -139,6 +124,21 @@
 		480A94E6244DB61800F780F7 /* EnemyFleeState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyFleeState.swift; sourceTree = "<group>"; };
 		480A94E7244DB61800F780F7 /* EnemyDefeatedState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyDefeatedState.swift; sourceTree = "<group>"; };
 		480A94E8244DB61800F780F7 /* Macros.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Macros.swift; sourceTree = "<group>"; };
+		48BD21A6244E05640099A021 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		48BD21A7244E05640099A021 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		48BD21A8244E05640099A021 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48BD21AB244E05640099A021 /* AAPLAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLAppDelegate.m; sourceTree = "<group>"; };
+		48BD21AC244E05640099A021 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		48BD21AD244E05640099A021 /* AAPLAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLAppDelegate.h; sourceTree = "<group>"; };
+		48BD21B5244E06470099A021 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		48BD21B7244E06470099A021 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		48BD21B8244E06470099A021 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		48BD21B9244E06470099A021 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48BD21BC244E06470099A021 /* AAPLAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLAppDelegate.m; sourceTree = "<group>"; };
+		48BD21BD244E06470099A021 /* AAPLGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLGameViewController.h; sourceTree = "<group>"; };
+		48BD21BE244E06470099A021 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		48BD21BF244E06470099A021 /* AAPLAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLAppDelegate.h; sourceTree = "<group>"; };
+		48BD21C0244E06470099A021 /* AAPLGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLGameViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,46 +183,21 @@
 		1141FF831AE58AFD001AA25A /* OSX */ = {
 			isa = PBXGroup;
 			children = (
-				1141FF841AE58AFD001AA25A /* AAPLAppDelegate.h */,
-				1141FF851AE58AFD001AA25A /* AAPLAppDelegate.m */,
-				1141FF8F1AE58AFD001AA25A /* Images.xcassets */,
-				1141FF911AE58AFD001AA25A /* MainMenu.xib */,
-				1141FF941AE58AFD001AA25A /* Info.plist */,
-				1141FF871AE58AFD001AA25A /* Supporting Files */,
+				48BD21AA244E05640099A021 /* ObjC */,
+				48BD21A4244E05640099A021 /* SupportingFiles */,
+				48BD21A9244E05640099A021 /* Swift */,
 			);
 			path = OSX;
-			sourceTree = "<group>";
-		};
-		1141FF871AE58AFD001AA25A /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				1141FF881AE58AFD001AA25A /* main.m */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		1141FFAE1AE58BC6001AA25A /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				1141FFB21AE58BC6001AA25A /* AAPLAppDelegate.h */,
-				1141FFB31AE58BC6001AA25A /* AAPLAppDelegate.m */,
-				1141FFBA1AE58BC6001AA25A /* AAPLGameViewController.h */,
-				1141FFBB1AE58BC6001AA25A /* AAPLGameViewController.m */,
-				1141FFBD1AE58BC6001AA25A /* Main.storyboard */,
-				1141FFC01AE58BC6001AA25A /* Images.xcassets */,
-				1141FFC21AE58BC6001AA25A /* LaunchScreen.xib */,
-				1141FFC51AE58BC6001AA25A /* Info.plist */,
-				1141FFAF1AE58BC6001AA25A /* Supporting Files */,
+				48BD21BB244E06470099A021 /* ObjC */,
+				48BD21B3244E06470099A021 /* SupportingFiles */,
+				48BD21BA244E06470099A021 /* Swift */,
 			);
 			path = iOS;
-			sourceTree = "<group>";
-		};
-		1141FFAF1AE58BC6001AA25A /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				1141FFB01AE58BC6001AA25A /* main.m */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		480A9463244DB56000F780F7 /* Common */ = {
@@ -384,6 +359,63 @@
 			path = EnemyStateMachine;
 			sourceTree = "<group>";
 		};
+		48BD21A4244E05640099A021 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				48BD21A5244E05640099A021 /* MainMenu.xib */,
+				48BD21A7244E05640099A021 /* Images.xcassets */,
+				48BD21A8244E05640099A021 /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		48BD21A9244E05640099A021 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Swift;
+			sourceTree = "<group>";
+		};
+		48BD21AA244E05640099A021 /* ObjC */ = {
+			isa = PBXGroup;
+			children = (
+				48BD21AB244E05640099A021 /* AAPLAppDelegate.m */,
+				48BD21AC244E05640099A021 /* main.m */,
+				48BD21AD244E05640099A021 /* AAPLAppDelegate.h */,
+			);
+			path = ObjC;
+			sourceTree = "<group>";
+		};
+		48BD21B3244E06470099A021 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				48BD21B4244E06470099A021 /* LaunchScreen.xib */,
+				48BD21B6244E06470099A021 /* Main.storyboard */,
+				48BD21B8244E06470099A021 /* Images.xcassets */,
+				48BD21B9244E06470099A021 /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		48BD21BA244E06470099A021 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Swift;
+			sourceTree = "<group>";
+		};
+		48BD21BB244E06470099A021 /* ObjC */ = {
+			isa = PBXGroup;
+			children = (
+				48BD21BC244E06470099A021 /* AAPLAppDelegate.m */,
+				48BD21BD244E06470099A021 /* AAPLGameViewController.h */,
+				48BD21BE244E06470099A021 /* main.m */,
+				48BD21BF244E06470099A021 /* AAPLAppDelegate.h */,
+				48BD21C0244E06470099A021 /* AAPLGameViewController.m */,
+			);
+			path = ObjC;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -466,8 +498,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1141FF901AE58AFD001AA25A /* Images.xcassets in Resources */,
-				1141FF931AE58AFD001AA25A /* MainMenu.xib in Resources */,
+				48BD21AE244E05640099A021 /* MainMenu.xib in Resources */,
+				48BD21AF244E05640099A021 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,9 +507,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1141FFC41AE58BC6001AA25A /* LaunchScreen.xib in Resources */,
-				1141FFC11AE58BC6001AA25A /* Images.xcassets in Resources */,
-				1141FFBF1AE58BC6001AA25A /* Main.storyboard in Resources */,
+				48BD21C3244E06470099A021 /* Images.xcassets in Resources */,
+				48BD21C1244E06470099A021 /* LaunchScreen.xib in Resources */,
+				48BD21C2244E06470099A021 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,15 +522,14 @@
 			files = (
 				480A94FD244DB61800F780F7 /* Level.swift in Sources */,
 				480A9501244DB61800F780F7 /* EnemyRespawnState.swift in Sources */,
-				1141FF891AE58AFD001AA25A /* main.m in Sources */,
 				480A94B6244DB56100F780F7 /* AAPLSpriteComponent.m in Sources */,
 				480A9505244DB61800F780F7 /* EnemyFleeState.swift in Sources */,
 				480A9503244DB61800F780F7 /* EnemyChaseState.swift in Sources */,
 				480A94CE244DB56100F780F7 /* AAPLEnemyState.m in Sources */,
+				48BD21B2244E05640099A021 /* main.m in Sources */,
 				480A94EB244DB61800F780F7 /* PlayerControlComponent.swift in Sources */,
 				480A94FF244DB61800F780F7 /* EnemyState.swift in Sources */,
 				480A94BA244DB56100F780F7 /* AAPLPlayerControlComponent.m in Sources */,
-				1141FF861AE58AFD001AA25A /* AAPLAppDelegate.m in Sources */,
 				480A94C4244DB56100F780F7 /* AAPLLevel.m in Sources */,
 				480A9509244DB61800F780F7 /* Macros.swift in Sources */,
 				480A94FB244DB61800F780F7 /* SpriteNode.swift in Sources */,
@@ -511,6 +542,7 @@
 				480A94CA244DB56100F780F7 /* AAPLEnemyFleeState.m in Sources */,
 				480A94E9244DB61800F780F7 /* GameComponent.swift in Sources */,
 				480A9507244DB61800F780F7 /* EnemyDefeatedState.swift in Sources */,
+				48BD21B1244E05640099A021 /* AAPLAppDelegate.m in Sources */,
 				480A94F1244DB61800F780F7 /* GameEntity.swift in Sources */,
 				480A94C8244DB56100F780F7 /* AAPLEnemyDefeatedState.m in Sources */,
 				480A94C2244DB56100F780F7 /* AAPLGame.m in Sources */,
@@ -533,6 +565,7 @@
 				480A94BB244DB56100F780F7 /* AAPLPlayerControlComponent.m in Sources */,
 				480A9508244DB61800F780F7 /* EnemyDefeatedState.swift in Sources */,
 				480A94FE244DB61800F780F7 /* Level.swift in Sources */,
+				48BD21C6244E06470099A021 /* main.m in Sources */,
 				480A94FA244DB61800F780F7 /* Scene.swift in Sources */,
 				480A94EC244DB61800F780F7 /* PlayerControlComponent.swift in Sources */,
 				480A94B7244DB56100F780F7 /* AAPLSpriteComponent.m in Sources */,
@@ -548,12 +581,11 @@
 				480A94F6244DB61800F780F7 /* GameRuleSystem.swift in Sources */,
 				480A94CB244DB56100F780F7 /* AAPLEnemyFleeState.m in Sources */,
 				480A9502244DB61800F780F7 /* EnemyRespawnState.swift in Sources */,
+				48BD21C7244E06470099A021 /* AAPLGameViewController.m in Sources */,
+				48BD21C5244E06470099A021 /* AAPLAppDelegate.m in Sources */,
 				480A94C1244DB56100F780F7 /* AAPLScene.m in Sources */,
-				1141FFBC1AE58BC6001AA25A /* AAPLGameViewController.m in Sources */,
-				1141FFB41AE58BC6001AA25A /* AAPLAppDelegate.m in Sources */,
 				480A94EE244DB61800F780F7 /* Direction.swift in Sources */,
 				480A94BF244DB56100F780F7 /* AAPLSpriteNode.m in Sources */,
-				1141FFB11AE58BC6001AA25A /* main.m in Sources */,
 				480A950A244DB61800F780F7 /* Macros.swift in Sources */,
 				480A94F4244DB61800F780F7 /* IntelligenceComponent.swift in Sources */,
 				480A94C9244DB56100F780F7 /* AAPLEnemyDefeatedState.m in Sources */,
@@ -566,28 +598,28 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		1141FF911AE58AFD001AA25A /* MainMenu.xib */ = {
+		48BD21A5244E05640099A021 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				1141FF921AE58AFD001AA25A /* Base */,
+				48BD21A6244E05640099A021 /* Base */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
-		1141FFBD1AE58BC6001AA25A /* Main.storyboard */ = {
+		48BD21B4244E06470099A021 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				1141FFBE1AE58BC6001AA25A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		1141FFC21AE58BC6001AA25A /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1141FFC31AE58BC6001AA25A /* Base */,
+				48BD21B5244E06470099A021 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		48BD21B6244E06470099A021 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				48BD21B7244E06470099A021 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -683,7 +715,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = OSX/Info.plist;
+				INFOPLIST_FILE = OSX/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.Maze";
 				PRODUCT_NAME = Maze;
@@ -698,7 +730,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = OSX/Info.plist;
+				INFOPLIST_FILE = OSX/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.Maze";
 				PRODUCT_NAME = Maze;
@@ -713,7 +745,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				INFOPLIST_FILE = iOS/Info.plist;
+				INFOPLIST_FILE = iOS/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.Maze";
 				PRODUCT_NAME = Maze;
@@ -730,7 +762,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = iOS/Info.plist;
+				INFOPLIST_FILE = iOS/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.Maze";
 				PRODUCT_NAME = Maze;

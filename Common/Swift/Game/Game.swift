@@ -10,17 +10,6 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
-extension NSColor {
-    class func random() -> NSColor {
-        let red =   UInt32.random(in: 0...255)
-        let green = UInt32.random(in: 0...255)
-        let blue =  UInt32.random(in: 0...255)
-        let color = NSColor(red: CGFloat(red) / 255, green: CGFloat(green) / 255, blue: CGFloat(blue) / 255, alpha: 1)
-        return color
-    }
-}
-
-
 public final class Game: NSObject {
     public let level: Level
     private static let powerupDuractionInSeconds: TimeInterval = 10
@@ -135,7 +124,7 @@ private extension Game {
             try! enemy.updateGridPosition(node.gridPosition)
             
             enemy.addComponent(
-                SpriteComponent(colorDefault: .random())
+                SpriteComponent(colorDefault: Game.randomColor())
             )
             
             enemy.addComponent(
@@ -281,4 +270,41 @@ public extension Game {
 public enum ContactCategorySwift: UInt32 {
     case player = 1
     case enemy  = 2
+}
+
+#if os(macOS)
+
+extension NSColor {
+    class func random() -> NSColor {
+        let red =   UInt32.random(in: 0...255)
+        let green = UInt32.random(in: 0...255)
+        let blue =  UInt32.random(in: 0...255)
+        let color = NSColor(red: CGFloat(red) / 255, green: CGFloat(green) / 255, blue: CGFloat(blue) / 255, alpha: 1)
+        return color
+    }
+}
+
+#endif
+
+#if os(iOS)
+extension UIColor {
+    class func random() -> UIColor {
+        let redValue = CGFloat(arc4random_uniform(255)) / 255.0;
+        let greenValue = CGFloat(arc4random_uniform(255)) / 255.0;
+        let blueValue = CGFloat(arc4random_uniform(255)) / 255.0;
+        return UIColor(red: redValue, green: greenValue, blue: blueValue, alpha: 1.0)
+    }
+}
+#endif
+
+extension Game {
+    static func randomColor() -> SKColor {
+        #if os(macOS)
+        return NSColor.random()
+        #elseif(iOS)
+        return UIColor.random()
+        #else
+        fatalError("unsupported OS")
+        #endif
+    }
 }
