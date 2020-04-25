@@ -27,20 +27,20 @@ public extension GenericLevel where MapTile == Simple {
         var spawnPoints = [GKGridGraphNode]()
         var playerStartingPosition: GKGridGraphNode?
         
-        func tileAt(row: Int, column: Int) -> MapTile {
-            map.tilesByRowAndColumn[row][column]
-        }
-        
-        for x in 0..<Int(map.width.value) {
-            for y in 0..<Int(map.height.value) {
-                let gridPosition = GridPosition(x: x, y: y)
+        for rowIndex in 0..<map.height.value {
+            for columnIndex in 0..<map.width.value {
+                
+                let gridPosition = GridPosition(
+                    x: columnIndex,
+                    y: rowIndex
+                )
+                
                 guard
                     let node = graph.node(atGridPosition: gridPosition)
                     else {
                         fatalError("No node, why? Bad state? Incorrect impl?")
                 }
-//                let tile: Simple = map[gridPosition].tile
-                let tile: Simple = tileAt(row: x, column: y)
+                let tile: Simple = map[gridPosition].tile
                 switch tile {
                 case .wall: walls.append(node)
                 case .portal: spawnPoints.append(node)

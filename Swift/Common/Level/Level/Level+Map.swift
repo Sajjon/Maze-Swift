@@ -38,13 +38,11 @@ public extension GenericLevel {
                     )
                 }
             }
-            
-            // YES we are transposing here. Because that is what GKGridGraph expects  ¯\_(ツ)_/¯
-            let height = tilesByRowAndColumn.count
             let width = firstRow.count
+            let height = tilesByRowAndColumn.count
             self.size = try AbstractSize(
-                width:/* WHY I need to transpose? 😢 */height,
-                height:/* WHY I need to transpose? 😢 */ width
+                width: width,
+                height: height
             )
             self.tilesByRowAndColumn = tilesByRowAndColumn
         }
@@ -91,12 +89,12 @@ public extension GenericLevel.Map {
     /// This is the global position in the grid, i.e. rowWidth*x + y
     typealias TileIndex = Int
     
-    var startIndex: Index {
+    var startIndex: GridPosition {
         .zero
     }
     
-    var endIndex: Index {
-        Index(x: width.value-1, y: height.value-1)
+    var endIndex: GridPosition {
+        GridPosition(x: width.value-1, y: height.value-1)
     }
     
     subscript(row: Int, column: Int) -> Element {
@@ -110,7 +108,7 @@ public extension GenericLevel.Map {
             
             return MapTileAt(
                 tile: tilesByRowAndColumn[row][column],
-                position: .init(x: row, y: column)
+                position: .init(x: column, y: row)
             )
         }
     }
@@ -121,27 +119,19 @@ public extension GenericLevel.Map {
             return self[toGridPositionFrom(tileIndex: tileIndex)]
         }
     }
- 
-//    var count: Int {
-//        Int(width.value * height.value)
-//    }
-    
+
     subscript(gridPosition: GridPosition) -> Element {
         self[Int(gridPosition.y), Int(gridPosition.x)]
     }
     
     func index(after index: Index) -> Index {
         let after: Index
-        var dEbUgOnLy_Did_Jump_To_Next_Row = false
         if index.x < (width.value - 1) {
             after = Index(x: index.x + 1, y: index.y)
         } else {
-            dEbUgOnLy_Did_Jump_To_Next_Row = true
             after = Index(x: 0, y: index.y + 1)
         }
-        if dEbUgOnLy_Did_Jump_To_Next_Row {
-            print("index: \(index), after: \(after)")
-        }
+    
         return after
     }
 }
@@ -153,13 +143,14 @@ internal extension GenericLevel.Map {
     var colummnHeight: TileIndex { .init(height.value) }
     
     func toGridPositionFrom(tileIndex: TileIndex) -> GridPosition {
-        let (rowIndex, _) = tileIndex.remainderReportingOverflow(dividingBy: rowWidth)
         let columnIndex = tileIndex % rowWidth
-        return GridPosition(x: rowIndex, y: columnIndex)
+        let (rowIndex, isOverflowing) = (tileIndex - columnIndex).remainderReportingOverflow(dividingBy: rowWidth)
+        assert(!isOverflowing, "division should result in non floating number")
+        return GridPosition(x: columnIndex, y: rowIndex)
     }
     
     func toTileIndexFrom(gridPosition: GridPosition) -> TileIndex {
-        let tileIndex = rowWidth * TileIndex(gridPosition.x) + TileIndex(gridPosition.y)
+        let tileIndex = rowWidth * TileIndex(gridPosition.y) + TileIndex(gridPosition.x)
         return tileIndex
     }
 }

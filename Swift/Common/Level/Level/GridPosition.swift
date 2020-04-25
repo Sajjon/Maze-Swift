@@ -12,9 +12,9 @@ public typealias GridPosition = SIMD2<Int32>
 
 extension GridPosition: Comparable {
     public static func < (lhs: Self, rhs: Self) -> Bool {
-        if lhs.x < rhs.x { return true }
-        if lhs.x > rhs.x { return false }
-        return lhs.y < rhs.y
+        if lhs.y < rhs.y { return true }
+        if lhs.y > rhs.y { return false }
+        return lhs.x < rhs.x
     }
 }
 

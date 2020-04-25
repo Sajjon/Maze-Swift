@@ -198,16 +198,23 @@ public extension Game {
         )
         
         let graph = level.pathfindingGraph
-        for x in 0..<level.width.value {
-            for y in 0..<level.height.value {
-                let gridPosition = GridPosition(x: x, y: y)
+        for rowIndex in 0..<level.height.value {
+            for columnIndex in 0..<level.width.value {
+                
+                let gridPosition = GridPosition(
+                    x: columnIndex,
+                    y: rowIndex
+                )
+                
                 guard let _ = graph.node(atGridPosition: gridPosition) else { continue }
                 // Make nodes for traversable areas; leave walls as background color.
                 let node = SKSpriteNode(color: .gray, size: cellSize)
+                
                 node.position = CGPoint(
-                    x: (CGFloat(x) + 0.5) * Scene.cellWidth,
-                    y: (CGFloat(y) + 0.5) * Scene.cellWidth
+                    x: (CGFloat(columnIndex) + 0.5) * Scene.cellWidth,
+                    y: (CGFloat(rowIndex) + 0.5) * Scene.cellWidth
                 )
+                
                 maze.addChild(node)
             }
         }
