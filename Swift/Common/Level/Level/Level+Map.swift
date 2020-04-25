@@ -22,11 +22,8 @@ public extension GenericLevel {
         public let size: AbstractSize
         public let tilesByRowAndColumn: [[MapTile]]
         
-        private let _hasNodeAt: (MapTileAt) -> Bool
-        
         public init(
-            tilesByRowAndColumn: [[MapTile]],
-            hasNodeAt: @escaping (MapTileAt) -> Bool
+            tilesByRowAndColumn: [[MapTile]]
         ) throws {
             guard let firstRow = tilesByRowAndColumn.first else {
                 throw Error.cannotBeEmpty
@@ -42,9 +39,14 @@ public extension GenericLevel {
                 }
             }
             
-            self.size = try AbstractSize(width: firstRow.count, height: tilesByRowAndColumn.count)
+            // YES we are transposing here. Because that is what GKGridGraph expects  ¯\_(ツ)_/¯
+            let height = firstRow.count
+            let width = tilesByRowAndColumn.count
+            self.size = try AbstractSize(
+                width:/* WHY I need to transpose? 😢 */height,
+                height:/* WHY I need to transpose? 😢 */ width
+            )
             self.tilesByRowAndColumn = tilesByRowAndColumn
-            self._hasNodeAt = hasNodeAt
         }
     
     }
@@ -56,14 +58,6 @@ public extension GenericLevel.Map {
     
     var cgWidth: CGFloat { CGFloat(width.value) }
     var cgHeight: CGFloat { CGFloat(height.value) }
-    
-    func shouldGraphCreateNode(at gridPosition: GridPosition) -> Bool {
-        _hasNodeAt(self[gridPosition])
-    }
-    
-    func shouldGraphCreateNode(for mapTileAt: MapTileAt) -> Bool {
-          _hasNodeAt(mapTileAt)
-      }
 }
 
 // MARK: Error
@@ -75,13 +69,6 @@ public extension GenericLevel.Map {
             butRowAtIndex: Int,
             hasLength: Int
         )
-    }
-}
-
-// MARK: Equatable
-public extension GenericLevel.Map {
-    static func  == (lhs: Self, rhs: Self) -> Bool {
-        lhs.tilesByRowAndColumn == rhs.tilesByRowAndColumn
     }
 }
 
@@ -109,15 +96,15 @@ public extension GenericLevel.Map {
     }
     
     var endIndex: Index {
-        Index(x: width.value, y: height.value)
+        Index(x: width.value-1, y: height.value-1)
     }
     
     subscript(row: Int, column: Int) -> Element {
         get {
-            guard row < rowWidth else {
+            guard row < height.value else {
                 fatalError("Out of bounds, row")
             }
-            guard column < colummnHeight else {
+            guard column < width.value else {
                 fatalError("Out of bounds, column")
             }
             
@@ -135,33 +122,43 @@ public extension GenericLevel.Map {
         }
     }
  
+//    var count: Int {
+//        Int(width.value * height.value)
+//    }
     
     subscript(gridPosition: GridPosition) -> Element {
-        self[Int(gridPosition.x), Int(gridPosition.y)]
+        self[Int(gridPosition.y), Int(gridPosition.x)]
     }
     
     func index(after index: Index) -> Index {
-        if index.x < (rowWidth - 1) {
-            return Index(x: index.x + 1, y: index.y)
+        let after: Index
+        var dEbUgOnLy_Did_Jump_To_Next_Row = false
+        if index.x < (width.value - 1) {
+            after = Index(x: index.x + 1, y: index.y)
         } else {
-            return Index(x: 0, y: index.y + 1)
+            dEbUgOnLy_Did_Jump_To_Next_Row = true
+            after = Index(x: 0, y: index.y + 1)
         }
+        if dEbUgOnLy_Did_Jump_To_Next_Row {
+            print("index: \(index), after: \(after)")
+        }
+        return after
     }
 }
 
-// MARK: Private
-private extension GenericLevel.Map {
+// MARK: Internal
+internal extension GenericLevel.Map {
     
     var rowWidth: TileIndex { .init(width.value) }
     var colummnHeight: TileIndex { .init(height.value) }
     
-    private func toGridPositionFrom(tileIndex: TileIndex) -> GridPosition {
+    func toGridPositionFrom(tileIndex: TileIndex) -> GridPosition {
         let (rowIndex, _) = tileIndex.remainderReportingOverflow(dividingBy: rowWidth)
         let columnIndex = tileIndex % rowWidth
         return GridPosition(x: rowIndex, y: columnIndex)
     }
     
-    private func toTileIndexFrom(gridPosition: GridPosition) -> TileIndex {
+    func toTileIndexFrom(gridPosition: GridPosition) -> TileIndex {
         let tileIndex = rowWidth * TileIndex(gridPosition.x) + TileIndex(gridPosition.y)
         return tileIndex
     }

@@ -14,6 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private lazy var window = createWindow(titled: "Pacman")
     private lazy var game = Game(level: .one)
+ 
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create game and its SpriteKit Scene

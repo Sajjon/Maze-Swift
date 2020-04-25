@@ -63,17 +63,23 @@ private extension PlayerControlComponent {
         guard let newDirection = newDirection, let node = node else {
             return nil
         }
-        let nextPosition: GridPosition
+        let positionDelta: GridPosition
         switch newDirection {
         case .left:
-            nextPosition = node.gridPosition + GridPosition.init(x: -1, y: 0)
+            positionDelta = .init(x: -1, y: 0)
         case .right:
-            nextPosition = node.gridPosition + GridPosition.init(x: 1, y: 0)
+            positionDelta = .init(x: 1, y: 0)
         case .down:
-            nextPosition = node.gridPosition + GridPosition.init(x: 0, y: -1)
+            positionDelta = .init(x: 0, y: -1)
         case .up:
-            nextPosition = node.gridPosition + GridPosition.init(x: 0, y: 1)
+            positionDelta = .init(x: 0, y: 1)
         }
+        let currentPosition = node.gridPosition
+        let currentIndex = level.map.toTileIndexFrom(gridPosition: currentPosition)
+        let indexDelta = level.map.toTileIndexFrom(gridPosition: positionDelta)
+        let nextIndex = currentIndex + indexDelta
+        let nextPosition = level.map.toGridPositionFrom(tileIndex: nextIndex)
+        print("newDir: \(newDirection), curPos: \(currentPosition), nextPos: \(nextPosition)")
         return level.pathfindingGraph.node(atGridPosition: nextPosition)
     }
     
@@ -101,11 +107,5 @@ private extension PlayerControlComponent {
 
     var isCurrentlyMoving: Bool {
         direction != nil
-    }
-}
-
-public extension GridPosition {
-    static func + (lhs: GridPosition, rhs: GridPosition) -> GridPosition {
-        fatalError()
     }
 }
