@@ -16,7 +16,7 @@ public final class Game: NSObject {
     private var lastUpdated: TimeInterval = -1
     public var playerIsImmortalAndLeathal: Bool = false {
         willSet {
-            let nextState: AnyClass
+            let nextState: EnemyState.Type
             if newValue {
                 // If player has power app, enemies should flee from her
                 nextState = EnemyFleeState.self
@@ -24,10 +24,7 @@ public final class Game: NSObject {
             } else {
                 nextState = EnemyChaseState.self
             }
-            
-            for component in intelligenceSystem.components {
-                component.stateMachine.enter(nextState)
-            }
+            updateBehaviourOfEnemies(nextState: nextState)
         }
     }
     
@@ -117,6 +114,7 @@ private extension Game {
     }
     
     static func setupEnemies(game: Game) -> [GameEntity] {
+   
         game.level.enemyStartPositions.map { node in
             
             let enemy = GameEntity()
@@ -268,8 +266,10 @@ public extension Game {
             }()
             
             enemyComponent.sprite = enemySprite
+            
             scene.addChild(enemySprite)
         }
+    
     }
 }
 
