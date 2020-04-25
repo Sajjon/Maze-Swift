@@ -63,24 +63,38 @@ private extension PlayerControlComponent {
         guard let newDirection = newDirection, let node = node else {
             return nil
         }
-        let positionDelta: GridPosition
-        switch newDirection {
-        case .left:
-            positionDelta = .init(x: -1, y: 0)
-        case .right:
-            positionDelta = .init(x: 1, y: 0)
-        case .down:
-            positionDelta = .init(x: 0, y: -1)
-        case .up:
-            positionDelta = .init(x: 0, y: 1)
-        }
-        let currentPosition = node.gridPosition
-        let currentIndex = level.map.toTileIndexFrom(gridPosition: currentPosition)
-        let indexDelta = level.map.toTileIndexFrom(gridPosition: positionDelta)
-        let nextIndex = currentIndex + indexDelta
-        let nextPosition = level.map.toGridPositionFrom(tileIndex: nextIndex)
-        print("newDir: \(newDirection), curPos: \(currentPosition), nextPos: \(nextPosition)")
-        return level.pathfindingGraph.node(atGridPosition: nextPosition)
+        
+        let nextPosition: GridPosition
+            switch newDirection {
+            case .left:
+                nextPosition = node.gridPosition &+ GridPosition.init(x: -1, y: 0)
+            case .right:
+                nextPosition = node.gridPosition &+ GridPosition.init(x: 1, y: 0)
+            case .down:
+                nextPosition = node.gridPosition &+ GridPosition.init(x: 0, y: -1)
+            case .up:
+                nextPosition = node.gridPosition &+ GridPosition.init(x: 0, y: 1)
+            }
+            return level.pathfindingGraph.node(atGridPosition: nextPosition)
+        
+//        let positionDelta: GridPosition
+//        switch newDirection {
+//        case .left:
+//            positionDelta = .init(x: -1, y: 0)
+//        case .right:
+//            positionDelta = .init(x: 1, y: 0)
+//        case .down:
+//            positionDelta = .init(x: 0, y: -1)
+//        case .up:
+//            positionDelta = .init(x: 0, y: 1)
+//        }
+//        let currentPosition = node.gridPosition
+//        let currentIndex = level.map.toTileIndexFrom(gridPosition: currentPosition)
+//        let indexDelta = level.map.toTileIndexFrom(gridPosition: positionDelta)
+//        let nextIndex = currentIndex + indexDelta
+//        let nextPosition = level.map.toGridPositionFrom(tileIndex: nextIndex)
+//        print("newDir: \(newDirection), curPos: \(currentPosition), nextPos: \(nextPosition)")
+//        return level.pathfindingGraph.node(atGridPosition: nextPosition)
     }
     
     func makeNextMove() {

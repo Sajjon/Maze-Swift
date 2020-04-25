@@ -40,8 +40,8 @@ public extension GenericLevel {
             }
             
             // YES we are transposing here. Because that is what GKGridGraph expects  ¯\_(ツ)_/¯
-            let height = firstRow.count
-            let width = tilesByRowAndColumn.count
+            let height = tilesByRowAndColumn.count
+            let width = firstRow.count
             self.size = try AbstractSize(
                 width:/* WHY I need to transpose? 😢 */height,
                 height:/* WHY I need to transpose? 😢 */ width
