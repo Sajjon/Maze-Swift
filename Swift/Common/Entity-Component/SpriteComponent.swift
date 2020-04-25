@@ -155,7 +155,8 @@ private extension SpriteComponent {
     
     func changeColor(to color: SKColor) {
         guard let sprite = sprite else {
-            fatalError("Sprite is nil, this is bad!")
+//            fatalError("Sprite is nil, this is bad!")
+            return
         }
         sprite.color = color
     }

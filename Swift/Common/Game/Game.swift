@@ -13,7 +13,7 @@ import GameplayKit
 public final class Game: NSObject {
     public let level: Level
     private static let powerupDuractionInSeconds: TimeInterval = 10
-    private var lastUpdated: TimeInterval = -1
+    private var lastUpdated: TimeInterval = 0
     public var playerIsImmortalAndLeathal: Bool = false {
         willSet {
             let nextState: EnemyState.Type
@@ -37,7 +37,8 @@ public final class Game: NSObject {
     private var powerupTimeRemaining: TimeInterval = 0
     
     private lazy var intelligenceSystem: GKComponentSystem<IntelligenceComponent> = {
-        let intelligenceSystem = GKComponentSystem<IntelligenceComponent>()
+        let intelligenceSystem = GKComponentSystem<IntelligenceComponent>(componentClass: IntelligenceComponent.self)
+        
         self.enemies.forEach { enemyEntity in
             intelligenceSystem.addComponent(foundIn: enemyEntity)
         }
@@ -173,7 +174,7 @@ public extension Game {
 extension Game: SKSceneDelegate {}
 public extension Game {
     func update(_ currentTime: TimeInterval, for scene: SKScene) {
-        if lastUpdated <= 0 {
+        if lastUpdated < 0 {
             // edge case, first time
             lastUpdated = currentTime
         }
@@ -192,6 +193,9 @@ public extension Game {
 extension Game: SceneDelegate {}
 public extension Game {
     func scene(_ scene: Scene, didMoveToView: SKView) {
+        defer {
+            updateBehaviourOfEnemies(nextState: EnemyChaseState.self)
+        }
         scene.backgroundColor = .black
         
         // Generate maze

@@ -28,7 +28,7 @@ public final class EnemyChaseState: EnemyState {
     
     private lazy var ruleSystem = EnemyChaseState.setupGameRuleSystem()
     
-    private var isHunting: Bool = false {
+    private var isHunting: Bool = true {
         willSet {
             guard newValue == false && isHunting == true else {
                 return
@@ -73,8 +73,12 @@ public extension EnemyChaseState {
         ruleSystem.reset()
         ruleSystem.evaluate()
         isHunting = ruleSystem.grade(forFact: .hunt) > 0
+        guard let pathToPlaya = pathToPlayer() else {
+                  fatalError("NO PATH TO PLAYYA")
+              }
         if isHunting {
-            startFollowing(path: pathToPlayer())
+      
+            startFollowing(path: pathToPlaya)
         } else if let scatterTarget = scatterTarget {
             startFollowing(path: path(to: scatterTarget))
         }
