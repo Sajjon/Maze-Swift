@@ -136,6 +136,12 @@ private extension Game {
         }
         
     }
+    
+    func updateBehaviourOfEnemies<State>(nextState: State.Type) where State: EnemyState {
+        intelligenceSystem.components.forEach {
+            $0.stateMachine.enter(nextState as AnyClass)
+        }
+    }
 }
 
 // MARK: SKPhysicsContactDelegate
