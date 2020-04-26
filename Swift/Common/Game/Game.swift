@@ -12,8 +12,7 @@ import GameplayKit
 
 public final class Game: NSObject {
     public let level: Level
-    private static let powerupDuractionInSeconds: TimeInterval = 10
-    private var lastUpdated: TimeInterval = 0
+    private var lastUpdated: TimeInterval = -1
     public var playerIsImmortalAndLeathal: Bool = false {
         willSet {
             let nextState: EnemyState.Type
@@ -90,6 +89,8 @@ public extension Game {
 // MARK: - Private
 private extension Game {
     
+    static let powerupDuractionInSeconds: TimeInterval = 10
+    
     func playerAttacked() {
         // Respawn player at starting position
         spriteComponent.warp(to: level.playerStartPosition.gridPosition)
@@ -145,18 +146,30 @@ private extension Game {
     }
 }
 
+extension SKPhysicsBody {
+    static func == (body: SKPhysicsBody, contactCandidate: ContactCategory) -> Bool {
+        body.categoryBitMask == contactCandidate.rawValue
+    }
+}
+
+extension SKPhysicsContact {
+    func between(bodyA typeA: ContactCategory, and typeB: ContactCategory) -> Bool {
+        bodyA == typeA && bodyB == typeB
+    }
+}
+
 // MARK: SKPhysicsContactDelegate
 extension Game: SKPhysicsContactDelegate {}
 public extension Game {
     func didBegin(_ contact: SKPhysicsContact) {
-        // MARK: This code is direction Swift conversion of Apple's not so pretty ObjC code
+        
         let enemyNode: SpriteNode
-        if contact.bodyA.categoryBitMask == ContactCategorySwift.enemy.rawValue {
-            enemyNode = contact.bodyA.node as! SpriteNode
-        } else if contact.bodyB.categoryBitMask == ContactCategorySwift.enemy.rawValue {
-            enemyNode = contact.bodyB.node as! SpriteNode
+        if contact.between(bodyA: .enemy, and: .player) {
+            enemyNode = castOrKill(contact.bodyA.node, to: SpriteNode.self)
+        } else if contact.between(bodyA: .player, and: .enemy) {
+            enemyNode = castOrKill(contact.bodyB.node, to: SpriteNode.self)
         } else {
-            fatalError("Expected player-enemy/enemy-player collision")
+            incorrectImplementation(should: "have been either 'player-enemy' or 'enemy-player' collision")
         }
         
         // If the player contacts an enemy that's in the Chase state, the player is attackeed.
@@ -171,10 +184,11 @@ public extension Game {
     }
 }
 
+// MARK: SKSceneDelegate
 extension Game: SKSceneDelegate {}
 public extension Game {
     func update(_ currentTime: TimeInterval, for scene: SKScene) {
-        if lastUpdated < 0 {
+        if lastUpdated <= 0 {
             // edge case, first time
             lastUpdated = currentTime
         }
@@ -190,6 +204,7 @@ public extension Game {
     }
 }
 
+// MARK: SceneDelegate
 extension Game: SceneDelegate {}
 public extension Game {
     func scene(_ scene: Scene, didMoveToView: SKView) {
@@ -242,8 +257,8 @@ public extension Game {
             sprite.yScale = sqrt(1)/2
             sprite.physicsBody = { () -> SKPhysicsBody in
                 let body = SKPhysicsBody(circleOfRadius: Scene.cellWidth/2)
-                body.categoryBitMask = ContactCategorySwift.player.rawValue
-                body.contactTestBitMask = ContactCategorySwift.enemy.rawValue
+                body.categoryBitMask = ContactCategory.player.rawValue
+                body.contactTestBitMask = ContactCategory.enemy.rawValue
                 body.collisionBitMask = 0
                 return body
                 
@@ -266,8 +281,8 @@ public extension Game {
                 sprite.position = scene.pointFrom(gridPosition: enemyEntity.gridPosition)
                 sprite.physicsBody = { () -> SKPhysicsBody in
                     let body = SKPhysicsBody(circleOfRadius: Scene.cellWidth/2)
-                    body.categoryBitMask = ContactCategorySwift.enemy.rawValue
-                    body.contactTestBitMask = ContactCategorySwift.player.rawValue
+                    body.categoryBitMask = ContactCategory.enemy.rawValue
+                    body.contactTestBitMask = ContactCategory.player.rawValue
                     body.collisionBitMask = 0
                     return body
                     
@@ -282,37 +297,6 @@ public extension Game {
     
     }
 }
-
-// MUST be power of 2
-public enum ContactCategorySwift: UInt32 {
-    case player = 1
-    case enemy  = 2
-}
-
-#if os(macOS)
-
-extension NSColor {
-    class func random() -> NSColor {
-        let red =   UInt32.random(in: 0...255)
-        let green = UInt32.random(in: 0...255)
-        let blue =  UInt32.random(in: 0...255)
-        let color = NSColor(red: CGFloat(red) / 255, green: CGFloat(green) / 255, blue: CGFloat(blue) / 255, alpha: 1)
-        return color
-    }
-}
-
-#endif
-
-#if os(iOS)
-extension UIColor {
-    class func random() -> UIColor {
-        let redValue = CGFloat(arc4random_uniform(255)) / 255.0;
-        let greenValue = CGFloat(arc4random_uniform(255)) / 255.0;
-        let blueValue = CGFloat(arc4random_uniform(255)) / 255.0;
-        return UIColor(red: redValue, green: greenValue, blue: blueValue, alpha: 1.0)
-    }
-}
-#endif
 
 extension Game {
     static func randomColor() -> SKColor {

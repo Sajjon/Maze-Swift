@@ -6,7 +6,6 @@
 //  Copyright © 2020 Alexander Cyon. All rights reserved.
 //
 
-import Foundation
 
 extension ExpressibleByIntegerLiteral where Self: RawRepresentable, Self.RawValue == IntegerLiteralType {
     public init(integerLiteral value: Self.IntegerLiteralType) {

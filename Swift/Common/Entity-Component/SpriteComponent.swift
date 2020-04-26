@@ -154,11 +154,7 @@ private extension SpriteComponent {
     
     
     func changeColor(to color: SKColor) {
-        guard let sprite = sprite else {
-//            fatalError("Sprite is nil, this is bad!")
-            return
-        }
-        sprite.color = color
+        sprite?.color = color
     }
     
     // MARK: Actions
@@ -191,19 +187,14 @@ private extension SpriteComponent {
         _ done: (() -> Void)? = nil
     ) {
         guard let sprite = sprite else {
-            fatalError("Sprite is nil, this is very bad!")
+            incorrectImplementation(should: "have set 'sprite' already.")
         }
         
         var actions = actions
         if let done = done {
             actions.append(SKAction.run(done))
         }
-        let action: SKAction = .sequence(actions)
-        
-        if let key = key {
-            sprite.run(action, withKey: key.rawValue)
-        } else {
-            sprite.run(action)
-        }
+
+        sprite.run(.sequence(actions), withKeyIfPresent: key)
     }
 }

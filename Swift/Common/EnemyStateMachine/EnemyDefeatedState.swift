@@ -23,12 +23,8 @@ public extension EnemyDefeatedState {
         spriteComponent.useDefeatedAppearance()
         
         // Use pathfinding to find a route back to this enemy's starting position.
-        guard
-            let respawnPosition = respawnPosition,
-            let pathToRespawn = path(to: respawnPosition)
-        else {
-            return
-        }
+        guard let respawnPosition = respawnPosition else { return }
+        let pathToRespawn = path(to: respawnPosition)
         
         spriteComponent.followPath(pathToRespawn) { [unowned self] in
             self.stateMachine?.enter(EnemyRespawnState.self)

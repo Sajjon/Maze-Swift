@@ -68,17 +68,14 @@ public extension EnemyChaseState {
             isHunting = true
         }
         
-        let distanceToPlayer = pathToPlayer()?.count ?? 0
+        let pathToPlayer_ = pathToPlayer()
+        let distanceToPlayer = pathToPlayer_.count
         ruleSystem[.distanceToPlayer] = distanceToPlayer
         ruleSystem.reset()
         ruleSystem.evaluate()
         isHunting = ruleSystem.grade(forFact: .hunt) > 0
-        guard let pathToPlaya = pathToPlayer() else {
-                  fatalError("NO PATH TO PLAYYA")
-              }
         if isHunting {
-      
-            startFollowing(path: pathToPlaya)
+            startFollowing(path: pathToPlayer_)
         } else if let scatterTarget = scatterTarget {
             startFollowing(path: path(to: scatterTarget))
         }

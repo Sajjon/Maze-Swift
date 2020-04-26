@@ -24,32 +24,28 @@ public class EnemyState: GKState {
     }
 }
 
+// MARK: Public
 public extension EnemyState {
     
-    func pathToPlayer() -> Path? {
-        let graph = game.level.pathfindingGraph
-        guard let playerNode = graph.node(atGridPosition: game.player.gridPosition) else {
-            return nil
+    func node(at gridPosition: GridPosition) -> GKGridGraphNode {
+        guard let node = graph.node(atGridPosition: gridPosition) else {
+            incorrectImplementationShouldAlwaysBeAble(to: "get player node")
         }
-        return path(to: playerNode)
+        return node
+    }
+    
+    func pathToPlayer() -> Path {
+        path(to: playerNode)
     }
     
     func randomEnemyStartPosition() -> GKGridGraphNode? {
         game.random.shuffling(array: game.level.enemyStartPositions).first
     }
     
-    func path(to destinationNode: GKGridGraphNode) -> Path? {
-        let graph = game.level.pathfindingGraph
-        guard let enemyNode = graph.node(atGridPosition: entity.gridPosition) else {
-            return nil
-        }
-        let path = graph.findPath(from: enemyNode, to: destinationNode).map { graphNode -> GKGridGraphNode in
-            guard let gridGraphNode = graphNode as? GKGridGraphNode else {
-                fatalError("Failed to cast GraphNode to GridGraphNode.")
-            }
-            return gridGraphNode
-        }
-        return path
+    func path(to destinationNode: GKGridGraphNode) -> Path {
+        let enemyNode = node(at: entity.gridPosition)
+        return graph.findPath(from: enemyNode, to: destinationNode)
+            .map { castOrKill($0, to: GKGridGraphNode.self) }
     }
     
     func startFollowing(path: Path?) {
@@ -69,5 +65,18 @@ public extension EnemyState {
     
     var spriteComponent: SpriteComponent {
         entity.componentOf(type: SpriteComponent.self)
+    }
+    
+    var playerNode: GKGridGraphNode {
+//        graph.node(atGridPosition: game.player.gridPosition)
+        node(at: game.player.gridPosition)
+    }
+}
+
+// MARK: Private
+private extension EnemyState {
+    
+    var graph: GKGridGraph<GKGridGraphNode> {
+        game.level.pathfindingGraph
     }
 }

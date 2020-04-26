@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		483798512455C962002DB9FD /* SKSpriteNode_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483798502455C962002DB9FD /* SKSpriteNode_Extensions.swift */; };
+		483798522455C962002DB9FD /* SKSpriteNode_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483798502455C962002DB9FD /* SKSpriteNode_Extensions.swift */; };
+		483798562455CD1C002DB9FD /* UIColor+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483798542455CD1C002DB9FD /* UIColor+Random.swift */; };
+		483798592455CD3B002DB9FD /* NSColor+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483798582455CD3B002DB9FD /* NSColor+Random.swift */; };
+		4837985D2455CD78002DB9FD /* ContactCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4837985C2455CD78002DB9FD /* ContactCategory.swift */; };
+		4837985E2455CD78002DB9FD /* ContactCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4837985C2455CD78002DB9FD /* ContactCategory.swift */; };
+		483798602455CDDA002DB9FD /* NSWindow+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4837985F2455CDDA002DB9FD /* NSWindow+Create.swift */; };
 		4889A502244E1DB400D0A711 /* GameComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4889A4EB244E1DB400D0A711 /* GameComponent.swift */; };
 		4889A503244E1DB400D0A711 /* GameComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4889A4EB244E1DB400D0A711 /* GameComponent.swift */; };
 		4889A504244E1DB400D0A711 /* PlayerControlComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4889A4ED244E1DB400D0A711 /* PlayerControlComponent.swift */; };
@@ -68,6 +75,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		483798502455C962002DB9FD /* SKSpriteNode_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSpriteNode_Extensions.swift; sourceTree = "<group>"; };
+		483798542455CD1C002DB9FD /* UIColor+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Random.swift"; sourceTree = "<group>"; };
+		483798582455CD3B002DB9FD /* NSColor+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+Random.swift"; sourceTree = "<group>"; };
+		4837985C2455CD78002DB9FD /* ContactCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCategory.swift; sourceTree = "<group>"; };
+		4837985F2455CDDA002DB9FD /* NSWindow+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindow+Create.swift"; sourceTree = "<group>"; };
 		4889A45E244E0FCF00D0A711 /* Maze-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Maze-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4889A4D1244E1D7F00D0A711 /* Maze-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Maze-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4889A4EB244E1DB400D0A711 /* GameComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameComponent.swift; sourceTree = "<group>"; };
@@ -126,6 +138,63 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4837984E2455C930002DB9FD /* SpriteKit */ = {
+			isa = PBXGroup;
+			children = (
+				483798502455C962002DB9FD /* SKSpriteNode_Extensions.swift */,
+			);
+			path = SpriteKit;
+			sourceTree = "<group>";
+		};
+		4837984F2455C945002DB9FD /* SwiftStandardLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				48DBFF6224544C5000EE92F1 /* ExpressibleByIntegerLiteral+RawValue.swift */,
+			);
+			path = SwiftStandardLibrary;
+			sourceTree = "<group>";
+		};
+		483798532455CD0B002DB9FD /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				483798542455CD1C002DB9FD /* UIColor+Random.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		483798572455CD30002DB9FD /* AppKit */ = {
+			isa = PBXGroup;
+			children = (
+				483798582455CD3B002DB9FD /* NSColor+Random.swift */,
+				4837985F2455CDDA002DB9FD /* NSWindow+Create.swift */,
+			);
+			path = AppKit;
+			sourceTree = "<group>";
+		};
+		4837985B2455CD6D002DB9FD /* Physics */ = {
+			isa = PBXGroup;
+			children = (
+				4837985C2455CD78002DB9FD /* ContactCategory.swift */,
+			);
+			path = Physics;
+			sourceTree = "<group>";
+		};
+		483798632455CE12002DB9FD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				483798572455CD30002DB9FD /* AppKit */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		483798642455CE1B002DB9FD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				483798532455CD0B002DB9FD /* UIKit */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		4889A455244E0FCF00D0A711 = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +217,7 @@
 		4889A4D2244E1D7F00D0A711 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				483798642455CE1B002DB9FD /* Extensions */,
 				4889A53C244E1FCC00D0A711 /* AppDelegate.swift */,
 				4889A53D244E1FCC00D0A711 /* SupportingFiles */,
 			);
@@ -157,6 +227,7 @@
 		4889A4E9244E1DB400D0A711 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4837985B2455CD6D002DB9FD /* Physics */,
 				48DBFF6124544C3200EE92F1 /* Extensions */,
 				4889A4EA244E1DB400D0A711 /* Entity-Component */,
 				4889A4F4244E1DB400D0A711 /* Game */,
@@ -239,6 +310,7 @@
 		4889A524244E1DBE00D0A711 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				483798632455CE12002DB9FD /* Extensions */,
 				4889A531244E1F6F00D0A711 /* AppDelegate.swift */,
 				4889A532244E1F6F00D0A711 /* SupportingFiles */,
 				4889A549244E202200D0A711 /* main.swift */,
@@ -271,7 +343,8 @@
 		48DBFF6124544C3200EE92F1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				48DBFF6224544C5000EE92F1 /* ExpressibleByIntegerLiteral+RawValue.swift */,
+				4837984F2455C945002DB9FD /* SwiftStandardLibrary */,
+				4837984E2455C930002DB9FD /* SpriteKit */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -409,11 +482,13 @@
 			files = (
 				4889A504244E1DB400D0A711 /* PlayerControlComponent.swift in Sources */,
 				4889A516244E1DB400D0A711 /* GenericLevel.swift in Sources */,
+				483798512455C962002DB9FD /* SKSpriteNode_Extensions.swift in Sources */,
 				48DBFF6A24544CB500EE92F1 /* Simple.swift in Sources */,
 				48DD8BCF2450620B00322B13 /* AbstractLengthUnit.swift in Sources */,
 				4889A518244E1DB400D0A711 /* EnemyState.swift in Sources */,
 				4889A502244E1DB400D0A711 /* GameComponent.swift in Sources */,
 				48DBFF6324544C5000EE92F1 /* ExpressibleByIntegerLiteral+RawValue.swift in Sources */,
+				483798602455CDDA002DB9FD /* NSWindow+Create.swift in Sources */,
 				48DD8BD8245063C500322B13 /* Level+Map+One.swift in Sources */,
 				4889A522244E1DB400D0A711 /* Macros.swift in Sources */,
 				4889A520244E1DB400D0A711 /* EnemyDefeatedState.swift in Sources */,
@@ -422,6 +497,7 @@
 				48DD8BCD2450620B00322B13 /* AbstractSize.swift in Sources */,
 				4889A514244E1DB400D0A711 /* SpriteNode.swift in Sources */,
 				4889A508244E1DB400D0A711 /* SpriteComponent.swift in Sources */,
+				4837985D2455CD78002DB9FD /* ContactCategory.swift in Sources */,
 				4889A506244E1DB400D0A711 /* Direction.swift in Sources */,
 				4889A50C244E1DB400D0A711 /* IntelligenceComponent.swift in Sources */,
 				4889A538244E1F6F00D0A711 /* AppDelegate.swift in Sources */,
@@ -432,6 +508,7 @@
 				48DD8BDB24543E6D00322B13 /* Level+Map.swift in Sources */,
 				48DD8BC824505E5100322B13 /* main.swift in Sources */,
 				4889A51C244E1DB400D0A711 /* EnemyChaseState.swift in Sources */,
+				483798592455CD3B002DB9FD /* NSColor+Random.swift in Sources */,
 				4889A510244E1DB400D0A711 /* Game.swift in Sources */,
 				4889A512244E1DB400D0A711 /* Scene.swift in Sources */,
 			);
@@ -442,6 +519,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4889A51F244E1DB400D0A711 /* EnemyFleeState.swift in Sources */,
+				483798522455C962002DB9FD /* SKSpriteNode_Extensions.swift in Sources */,
 				4889A517244E1DB400D0A711 /* GenericLevel.swift in Sources */,
 				4889A50B244E1DB400D0A711 /* GameEntity.swift in Sources */,
 				4889A511244E1DB400D0A711 /* Game.swift in Sources */,
@@ -456,6 +534,7 @@
 				4889A503244E1DB400D0A711 /* GameComponent.swift in Sources */,
 				48DBFF6B24544CB500EE92F1 /* Simple.swift in Sources */,
 				4889A523244E1DB400D0A711 /* Macros.swift in Sources */,
+				4837985E2455CD78002DB9FD /* ContactCategory.swift in Sources */,
 				4889A50D244E1DB400D0A711 /* IntelligenceComponent.swift in Sources */,
 				4889A50F244E1DB400D0A711 /* GameRuleSystem.swift in Sources */,
 				4889A507244E1DB400D0A711 /* Direction.swift in Sources */,
@@ -464,6 +543,7 @@
 				4889A51B244E1DB400D0A711 /* EnemyRespawnState.swift in Sources */,
 				48DBFF6424544C5000EE92F1 /* ExpressibleByIntegerLiteral+RawValue.swift in Sources */,
 				48DD8BD9245063C500322B13 /* Level+Map+One.swift in Sources */,
+				483798562455CD1C002DB9FD /* UIColor+Random.swift in Sources */,
 				4889A521244E1DB400D0A711 /* EnemyDefeatedState.swift in Sources */,
 				4889A509244E1DB400D0A711 /* SpriteComponent.swift in Sources */,
 				4889A513244E1DB400D0A711 /* Scene.swift in Sources */,
