@@ -28,13 +28,15 @@ public final class EnemyChaseState: EnemyState {
     
     private lazy var ruleSystem = EnemyChaseState.setupGameRuleSystem()
     
-    private var isHunting: Bool = true {
+    private var isHunting: Bool = false {
         willSet {
-            guard newValue == false && isHunting == true else {
-                return
+            if newValue {
+                spriteComponent.useHuntAppearance()
+            } else {
+                spriteComponent.useNormalAppearance()
             }
-       
-            self.scatterTarget = randomEnemyStartPosition()
+            guard newValue != isHunting else { return }
+            scatterTarget = newValue ? nil : randomEnemyStartPosition()
         }
     }
     
@@ -47,12 +49,17 @@ public final class EnemyChaseState: EnemyState {
 // ---
 // MARK: GKState LifeCycle
 public extension EnemyChaseState {
+    
+    override var description: String {
+        "ChaseState"
+    }
   
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         stateClass == EnemyFleeState.self
     }
     
-    override func didEnter(from _: GKState?) {
+    override func didEnter(from previousState: GKState?) {
+        super.didEnter(from: previousState)
         // Set the enemy sprite to its normal appearance,
         // undoing any changes that happened in other states.
         spriteComponent.useNormalAppearance()

@@ -14,16 +14,23 @@ public final class EnemyRespawnState: EnemyState {
 }
 
 public extension EnemyRespawnState {
+    
+    override var description: String {
+        "RespawnState"
+    }
+    
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         stateClass == EnemyChaseState.self
     }
     
-    override func didEnter(from _: GKState?) {
+    override func didEnter(from previousState: GKState?) {
+        super.didEnter(from: previousState)
         timeUntilRespawn = EnemyRespawnState.defaultRespawnTime
         spriteComponent.isPulseEffectEnabled = true
     }
     
-    override func willExit(to _: GKState) {
+    override func willExit(to newState: GKState) {
+          super.willExit(to: newState)
         // Restore the sprite's original appearance.
         spriteComponent.isPulseEffectEnabled = false
     }

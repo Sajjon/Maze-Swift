@@ -12,6 +12,7 @@ import SpriteKit
 
 public final class SpriteComponent: GameComponent {
     
+    public let identifier: String
     public let colorDefault: SKColor
     
     // SHOULD be set in `Game:didMove:to`
@@ -42,8 +43,9 @@ public final class SpriteComponent: GameComponent {
         }
     }
     
-    public init(colorDefault: SKColor) {
+    public init(colorDefault: SKColor, identifier: String) {
         self.colorDefault = colorDefault
+        self.identifier = identifier
         super.init()
     }
     
@@ -52,22 +54,7 @@ public final class SpriteComponent: GameComponent {
     }
 }
 
-// MARK: Appearance
-public extension SpriteComponent {
-    
-    func useNormalAppearance() {
-        changeColor(to: colorDefault)
-    }
-
-    func useFleeAppearance() {
-        changeColor(to: .white)
-    }
-    
-    func useDefeatedAppearance() {
-        run(actions: [.scale(to: 0.25, duration: 0.25)])
-    }
-}
-
+// MARK: Public
 public extension SpriteComponent {
     
     func setNextGridPosition(
@@ -126,6 +113,27 @@ public extension SpriteComponent {
     }
 }
 
+// MARK: Appearance
+public extension SpriteComponent {
+    
+    func useNormalAppearance() {
+        changeColor(to: colorDefault)
+    }
+    
+    func useHuntAppearance() {
+        changeColor(to: .red)
+    }
+
+    func useFleeAppearance() {
+        changeColor(to: .white)
+    }
+    
+    func useDefeatedAppearance() {
+        run(actions: [.scale(to: 0.25, duration: 0.25)])
+    }
+}
+
+// MARK: Private
 private extension SpriteComponent {
     
     enum ActionKey: String {
@@ -147,16 +155,13 @@ private extension SpriteComponent {
         return scene
     }
     
-    
-//    func pointFrom(gridPosition: GridPosition) -> CGPoint {
-//        scene.pointFrom(gridPosition: gridPosition)
-//    }
-    
-    
     func changeColor(to color: SKColor) {
         sprite?.color = color
     }
-    
+}
+
+// MARK: Actions
+private extension SpriteComponent {
     // MARK: Actions
     func actionMove(
         to gridPosition: GridPosition,

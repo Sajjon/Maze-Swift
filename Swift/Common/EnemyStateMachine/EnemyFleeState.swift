@@ -14,11 +14,17 @@ public final class EnemyFleeState: EnemyState {
 }
 
 public extension EnemyFleeState {
+    
+    override var description: String {
+        "FleeState"
+    }
+    
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         stateClass == EnemyChaseState.self || stateClass == EnemyDefeatedState.self
     }
     
     override func didEnter(from previousState: GKState?) {
+        super.didEnter(from: previousState)
         spriteComponent.useFleeAppearance()
         
         // Choose a location to flee towards.

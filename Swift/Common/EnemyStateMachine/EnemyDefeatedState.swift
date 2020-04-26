@@ -14,11 +14,17 @@ public final class EnemyDefeatedState: EnemyState {
 }
 
 public extension EnemyDefeatedState {
+    
+    override var description: String {
+         "DefeatedState"
+     }
+    
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         stateClass == EnemyRespawnState.self
     }
     
-    override func didEnter(from _: GKState?) {
+    override func didEnter(from previousState: GKState?) {
+        super.didEnter(from: previousState)
          // Change the enemy sprite's appearance to indicate defeat.
         spriteComponent.useDefeatedAppearance()
         

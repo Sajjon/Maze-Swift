@@ -107,20 +107,20 @@ private extension Game {
     static func setupPlayer(level: Level) -> GameEntity {
         let player = GameEntity()
         try! player.updateGridPosition(level.playerStartPosition.gridPosition)
-        player.addComponent(SpriteComponent(colorDefault: .cyan))
+        player.addComponent(SpriteComponent(colorDefault: .cyan, identifier: "🦸🏼‍♀️"))
         player.addComponent(PlayerControlComponent(level: level))
         return player
     }
     
     static func setupEnemies(game: Game) -> [GameEntity] {
         
-        game.level.enemyStartPositions.map { node in
+        game.level.enemyStartPositions.enumerated().map { enemyNumber, node in
             
             let enemy = GameEntity()
             try! enemy.updateGridPosition(node.gridPosition)
             
             enemy.addComponent(
-                SpriteComponent(colorDefault: Game.randomColor())
+                SpriteComponent(colorDefault: .orange, identifier: "\(enemyNumber)")
             )
             
             enemy.addComponent(
@@ -215,17 +215,15 @@ public extension Game {
         
         for tileAt in level.map {
             let gridPosition = tileAt.position
-            
-            
             guard let _ = graph.node(atGridPosition: gridPosition) else { continue }
             // Make nodes for traversable areas; leave walls as background color.
             let node = SKSpriteNode(color: .gray, size: cellSize)
-            
             node.position = gridPosition.toPointForScene()
-            
             maze.addChild(node)
         }
         scene.addChild(maze)
+        
+        let radius = Scene.cellWidth/2
         
         // Add player entity to scene
         let playerComponent = player.componentOf(type: SpriteComponent.self)
@@ -239,14 +237,7 @@ public extension Game {
             sprite.zRotation = .pi / 4
             sprite.xScale = sqrt(1)/2
             sprite.yScale = sqrt(1)/2
-            sprite.physicsBody = { () -> SKPhysicsBody in
-                let body = SKPhysicsBody(circleOfRadius: Scene.cellWidth/2)
-                body.categoryBitMask = ContactCategory.player.rawValue
-                body.contactTestBitMask = ContactCategory.enemy.rawValue
-                body.collisionBitMask = 0
-                return body
-                
-            }()
+            sprite.physicsBody = .player(radius: radius)
             return sprite
         }()
         playerComponent.sprite = playerSprite
@@ -263,22 +254,41 @@ public extension Game {
                     size: cellSize
                 )
                 sprite.position = enemyEntity.point
-                sprite.physicsBody = { () -> SKPhysicsBody in
-                    let body = SKPhysicsBody(circleOfRadius: Scene.cellWidth/2)
-                    body.categoryBitMask = ContactCategory.enemy.rawValue
-                    body.contactTestBitMask = ContactCategory.player.rawValue
-                    body.collisionBitMask = 0
-                    return body
-                    
-                }()
+                sprite.physicsBody = .enemy(radius: radius)
                 return sprite
             }()
-            
+            let labelNode = SKLabelNode(text: enemyComponent.identifier)
+            labelNode.fontSize = 28
+            labelNode.fontColor = .black
+            enemySprite.addChild(labelNode)
             enemyComponent.sprite = enemySprite
             
             scene.addChild(enemySprite)
         }
         
+    }
+}
+
+extension SKPhysicsBody {
+    
+    static func player(radius: CGFloat) -> SKPhysicsBody {
+        category(of: .player, contactTest: .enemy, radius: radius)
+    }
+    
+    static func enemy(radius: CGFloat) -> SKPhysicsBody {
+        category(of: .enemy, contactTest: .player, radius: radius)
+    }
+    
+    static func category(
+        of category: ContactCategory,
+        contactTest: ContactCategory,
+        radius: CGFloat
+    ) -> SKPhysicsBody {
+        let body = SKPhysicsBody(circleOfRadius: Scene.cellWidth/2)
+        body.categoryBitMask = category.rawValue
+        body.contactTestBitMask = contactTest.rawValue
+        body.collisionBitMask = 0
+        return body
     }
 }
 
