@@ -20,18 +20,34 @@ public final class Scene: SKScene {
    public var sceneDelegate: SceneDelegate?
 }
 
+
+public extension GridPosition {
+    
+    func toPointForScene() -> CGPoint {
+        toCGPoint(scaleBy: Scene.cellWidth)
+    }
+    
+    func toCGPoint(scaleBy scalingFactor: CGFloat = 1) -> CGPoint {
+        func cgPoint(_ keyPath: KeyPath<Self, Scalar>) -> CGFloat {
+            let scalar = self[keyPath: keyPath]
+            return (CGFloat(scalar) + 0.5) * scalingFactor
+        }
+        
+        return CGPoint(
+            x: cgPoint(\.x),
+            y: cgPoint(\.y)
+        )
+    }
+}
+
 public extension Scene {
     
     static let cellWidth: CGFloat = 27
     var cellWidth: CGFloat { Scene.cellWidth }
     
-    func pointFrom(gridPosition: GridPosition) -> CGPoint {
-        let x = CGFloat(gridPosition.x) * cellWidth + cellWidth / 2
-        
-        let y = CGFloat(gridPosition.y) * cellWidth + cellWidth / 2
-        
-        return CGPoint(x: x, y: y)
-    }
+//    func pointFrom(gridPosition: GridPosition) -> CGPoint {
+//        gridPosition.toCGPoint(scaleBy: cellWidth)
+//    }
     
     override func didMove(to view: SKView) {
         guard let sceneDelegate = sceneDelegate else {

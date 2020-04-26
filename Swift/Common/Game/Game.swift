@@ -10,62 +10,31 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
+public typealias IntelligenceSystem = GKComponentSystem<IntelligenceComponent>
+
 public final class Game: NSObject {
     public let level: Level
     private var lastUpdated: TimeInterval = -1
-    public var playerIsImmortalAndLeathal: Bool = false {
-        willSet {
-            let nextState: EnemyState.Type
-            if newValue {
-                // If player has power app, enemies should flee from her
-                nextState = EnemyFleeState.self
-                powerupTimeRemaining = Self.powerupDuractionInSeconds
-            } else {
-                nextState = EnemyChaseState.self
-            }
-            updateBehaviourOfEnemies(nextState: nextState)
-        }
-    }
-    
+    private var powerupTimeRemaining: TimeInterval = 0
     public let random: GKRandomSource
     
-    public lazy var player: GameEntity = Game.setupPlayer(level: self.level)
+    public lazy var player: GameEntity                      = Game.setupPlayer(level: level)
+    private lazy var enemies: [GameEntity]                  = Game.setupEnemies(game: self)
+    private lazy var intelligenceSystem: IntelligenceSystem = Game.setupAI(enemies: enemies)
+    public lazy var scene: Scene                            = Game.setupScene(game: self)
     
-    private lazy var enemies: [GameEntity] = Game.setupEnemies(game: self)
-    
-    private var powerupTimeRemaining: TimeInterval = 0
-    
-    private lazy var intelligenceSystem: GKComponentSystem<IntelligenceComponent> = {
-        let intelligenceSystem = GKComponentSystem<IntelligenceComponent>(componentClass: IntelligenceComponent.self)
-        
-        self.enemies.forEach { enemyEntity in
-            intelligenceSystem.addComponent(foundIn: enemyEntity)
+    public var playerIsImmortalAndLeathal: Bool = false {
+        willSet {
+            if newValue { powerupTimeRemaining = Self.powerupDuractionInSeconds }
+            updateBehaviourOfEnemies(nextState: newValue ? EnemyFleeState.self : EnemyChaseState.self)
         }
-        return intelligenceSystem
-    }()
-    
-    public lazy var scene: Scene = {
-        let scene = Scene(
-            size: .init(
-                width: level.cgWidth * Scene.cellWidth,
-                height: level.cgHeight * Scene.cellWidth
-            )
-        )
-        
-        scene.delegate = self
-        scene.sceneDelegate = self
-        scene.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
-        scene.physicsWorld.contactDelegate = self
-        
-        return scene
-    }()
+    }
     
     public init(
         level: Level
     ) {
         self.level = level
         self.random = GKRandomSource()
-        
     }
 }
 
@@ -107,6 +76,34 @@ private extension Game {
         player.componentOf(type: SpriteComponent.self)
     }
     
+    func updateBehaviourOfEnemies<State>(nextState: State.Type) where State: EnemyState {
+        intelligenceSystem.components.forEach {
+            $0.stateMachine.enter(nextState as AnyClass)
+        }
+    }
+}
+
+// MARK: Static Setup
+private extension Game {
+    
+    static func setupScene(game: Game) -> Scene {
+        {
+            let scene = Scene(
+                size: .init(
+                    width: game.level.cgWidth * Scene.cellWidth,
+                    height: game.level.cgHeight * Scene.cellWidth
+                )
+            )
+            
+            scene.delegate = game
+            scene.sceneDelegate = game
+            scene.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+            scene.physicsWorld.contactDelegate = game
+            
+            return scene
+        }()
+    }
+    
     static func setupPlayer(level: Level) -> GameEntity {
         let player = GameEntity()
         try! player.updateGridPosition(level.playerStartPosition.gridPosition)
@@ -116,11 +113,10 @@ private extension Game {
     }
     
     static func setupEnemies(game: Game) -> [GameEntity] {
-   
+        
         game.level.enemyStartPositions.map { node in
             
             let enemy = GameEntity()
-            
             try! enemy.updateGridPosition(node.gridPosition)
             
             enemy.addComponent(
@@ -139,22 +135,17 @@ private extension Game {
         
     }
     
-    func updateBehaviourOfEnemies<State>(nextState: State.Type) where State: EnemyState {
-        intelligenceSystem.components.forEach {
-            $0.stateMachine.enter(nextState as AnyClass)
+    static func setupAI(enemies: [GameEntity]) -> IntelligenceSystem {
+        // N.B.: Do NOT use the empty initializer `GKComponentSystem<IntelligenceComponent>()`,
+        // this is not at all the same thing as `GKComponentSystem<IntelligenceComponent>(componentClass: IntelligenceComponent.self)`
+        // the empty init will result in no intelligence what so ever.
+        let intelligenceSystem = IntelligenceSystem(componentClass: IntelligenceComponent.self)
+        
+        enemies.forEach { enemyEntity in
+            intelligenceSystem.addComponent(foundIn: enemyEntity)
         }
-    }
-}
-
-extension SKPhysicsBody {
-    static func == (body: SKPhysicsBody, contactCandidate: ContactCategory) -> Bool {
-        body.categoryBitMask == contactCandidate.rawValue
-    }
-}
-
-extension SKPhysicsContact {
-    func between(bodyA typeA: ContactCategory, and typeB: ContactCategory) -> Bool {
-        bodyA == typeA && bodyB == typeB
+        
+        return intelligenceSystem
     }
 }
 
@@ -221,25 +212,18 @@ public extension Game {
         )
         
         let graph = level.pathfindingGraph
-        for rowIndex in 0..<level.height.value {
-            for columnIndex in 0..<level.width.value {
-                
-                let gridPosition = GridPosition(
-                    x: columnIndex,
-                    y: rowIndex
-                )
-                
-                guard let _ = graph.node(atGridPosition: gridPosition) else { continue }
-                // Make nodes for traversable areas; leave walls as background color.
-                let node = SKSpriteNode(color: .gray, size: cellSize)
-                
-                node.position = CGPoint(
-                    x: (CGFloat(columnIndex) + 0.5) * Scene.cellWidth,
-                    y: (CGFloat(rowIndex) + 0.5) * Scene.cellWidth
-                )
-                
-                maze.addChild(node)
-            }
+        
+        for tileAt in level.map {
+            let gridPosition = tileAt.position
+            
+            
+            guard let _ = graph.node(atGridPosition: gridPosition) else { continue }
+            // Make nodes for traversable areas; leave walls as background color.
+            let node = SKSpriteNode(color: .gray, size: cellSize)
+            
+            node.position = gridPosition.toPointForScene()
+            
+            maze.addChild(node)
         }
         scene.addChild(maze)
         
@@ -251,7 +235,7 @@ public extension Game {
                 color: .cyan,
                 size: cellSize
             )
-            sprite.position = scene.pointFrom(gridPosition: player.gridPosition)
+            sprite.position = player.point
             sprite.zRotation = .pi / 4
             sprite.xScale = sqrt(1)/2
             sprite.yScale = sqrt(1)/2
@@ -278,7 +262,7 @@ public extension Game {
                     color: enemyComponent.colorDefault,
                     size: cellSize
                 )
-                sprite.position = scene.pointFrom(gridPosition: enemyEntity.gridPosition)
+                sprite.position = enemyEntity.point
                 sprite.physicsBody = { () -> SKPhysicsBody in
                     let body = SKPhysicsBody(circleOfRadius: Scene.cellWidth/2)
                     body.categoryBitMask = ContactCategory.enemy.rawValue
@@ -294,7 +278,7 @@ public extension Game {
             
             scene.addChild(enemySprite)
         }
-    
+        
     }
 }
 

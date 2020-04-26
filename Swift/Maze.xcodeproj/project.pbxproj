@@ -72,6 +72,8 @@
 		48DD8BD9245063C500322B13 /* Level+Map+One.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DD8BD7245063C500322B13 /* Level+Map+One.swift */; };
 		48DD8BDB24543E6D00322B13 /* Level+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DD8BDA24543E6D00322B13 /* Level+Map.swift */; };
 		48DD8BDC24543E6D00322B13 /* Level+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DD8BDA24543E6D00322B13 /* Level+Map.swift */; };
+		48DE40152455D5790041CD20 /* SKPhysics_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE40142455D5790041CD20 /* SKPhysics_Extensions.swift */; };
+		48DE40162455D5790041CD20 /* SKPhysics_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE40142455D5790041CD20 /* SKPhysics_Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +120,7 @@
 		48DD8BCC2450620B00322B13 /* AbstractCoordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractCoordinate.swift; path = ../AbstractCoordinate.swift; sourceTree = "<group>"; };
 		48DD8BD7245063C500322B13 /* Level+Map+One.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Level+Map+One.swift"; sourceTree = "<group>"; };
 		48DD8BDA24543E6D00322B13 /* Level+Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Level+Map.swift"; sourceTree = "<group>"; };
+		48DE40142455D5790041CD20 /* SKPhysics_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPhysics_Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				483798502455C962002DB9FD /* SKSpriteNode_Extensions.swift */,
+				48DE40142455D5790041CD20 /* SKPhysics_Extensions.swift */,
 			);
 			path = SpriteKit;
 			sourceTree = "<group>";
@@ -485,6 +489,7 @@
 				483798512455C962002DB9FD /* SKSpriteNode_Extensions.swift in Sources */,
 				48DBFF6A24544CB500EE92F1 /* Simple.swift in Sources */,
 				48DD8BCF2450620B00322B13 /* AbstractLengthUnit.swift in Sources */,
+				48DE40152455D5790041CD20 /* SKPhysics_Extensions.swift in Sources */,
 				4889A518244E1DB400D0A711 /* EnemyState.swift in Sources */,
 				4889A502244E1DB400D0A711 /* GameComponent.swift in Sources */,
 				48DBFF6324544C5000EE92F1 /* ExpressibleByIntegerLiteral+RawValue.swift in Sources */,
@@ -527,6 +532,7 @@
 				48DD8BD02450620B00322B13 /* AbstractLengthUnit.swift in Sources */,
 				48DD8BCE2450620B00322B13 /* AbstractSize.swift in Sources */,
 				48DBFF6724544C7000EE92F1 /* GridPosition.swift in Sources */,
+				48DE40162455D5790041CD20 /* SKPhysics_Extensions.swift in Sources */,
 				48DD8BD42450620B00322B13 /* AbstractCoordinate.swift in Sources */,
 				48DD8BDC24543E6D00322B13 /* Level+Map.swift in Sources */,
 				4889A505244E1DB400D0A711 /* PlayerControlComponent.swift in Sources */,

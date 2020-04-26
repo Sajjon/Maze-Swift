@@ -68,7 +68,6 @@ public extension EnemyState {
     }
     
     var playerNode: GKGridGraphNode {
-//        graph.node(atGridPosition: game.player.gridPosition)
         node(at: game.player.gridPosition)
     }
 }

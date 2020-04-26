@@ -79,7 +79,7 @@ public extension SpriteComponent {
         self.nextGridPosition = nextGridPosition
         
         let move: SKAction = .move(
-            to: pointFrom(gridPosition: nextGridPosition),
+            to: nextGridPosition.toPointForScene(),
             duration: 0.35
         )
         
@@ -96,7 +96,7 @@ public extension SpriteComponent {
     func warp(to gridPosition: GridPosition) {
         let fadeOut: SKAction = .fadeOut(withDuration: 0.5)
         let warp: SKAction = .move(
-            to: pointFrom(gridPosition: gridPosition),
+            to: gridPosition.toPointForScene(),
             duration: 0.5
         )
         let fadeIn: SKAction = .fadeIn(withDuration: 0.5)
@@ -148,9 +148,9 @@ private extension SpriteComponent {
     }
     
     
-    func pointFrom(gridPosition: GridPosition) -> CGPoint {
-        scene.pointFrom(gridPosition: gridPosition)
-    }
+//    func pointFrom(gridPosition: GridPosition) -> CGPoint {
+//        scene.pointFrom(gridPosition: gridPosition)
+//    }
     
     
     func changeColor(to color: SKColor) {
@@ -163,7 +163,7 @@ private extension SpriteComponent {
         duration: TimeInterval = 0.5
     ) -> SKAction {
         .move(
-            to: pointFrom(gridPosition: gridPosition),
+            to: gridPosition.toPointForScene(),
             duration: duration
         )
     }

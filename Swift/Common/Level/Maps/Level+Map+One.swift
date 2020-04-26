@@ -27,30 +27,19 @@ public extension GenericLevel where MapTile == Simple {
         var spawnPoints = [GKGridGraphNode]()
         var playerStartingPosition: GKGridGraphNode?
         
-        for rowIndex in 0..<map.height.value {
-            for columnIndex in 0..<map.width.value {
-                
-                let gridPosition = GridPosition(
-                    x: columnIndex,
-                    y: rowIndex
-                )
-                
-                guard
-                    let node = graph.node(atGridPosition: gridPosition)
-                    else {
-                        fatalError("No node, why? Bad state? Incorrect impl?")
+        for tileAt in map {
+            guard let node = graph.node(atGridPosition: tileAt.position) else {
+                incorrectImplementationShouldAlwaysBeAble(to: "find node")
+            }
+            switch tileAt.tile {
+            case .wall: walls.append(node)
+            case .portal: spawnPoints.append(node)
+            case .playerStart:
+                if playerStartingPosition != nil {
+                    incorrectImplementation(should: "Not have seen multiple start positions")
                 }
-                let tile: Simple = map[gridPosition].tile
-                switch tile {
-                case .wall: walls.append(node)
-                case .portal: spawnPoints.append(node)
-                case .playerStart:
-                    if playerStartingPosition != nil {
-                        fatalError("multiple start positions not supported")
-                    }
-                    playerStartingPosition = node
-                case .open: break
-                }
+                playerStartingPosition = node
+            case .open: break
             }
         }
         

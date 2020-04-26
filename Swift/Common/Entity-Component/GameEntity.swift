@@ -27,6 +27,8 @@ public final class GameEntity: GKEntity {
 // MARK: Public
 public extension GameEntity {
     
+    var point: CGPoint { gridPosition.toPointForScene() }
+    
     func updateGridPosition(_ newGridPosition: GridPosition) throws {
         // TODO validate that the new grid position exists....
         self.gridPosition = newGridPosition
